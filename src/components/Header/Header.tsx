@@ -11,15 +11,21 @@ const NavBar = (props: Props) => {
       <Box
         sx={{
           flexGrow: 1,
-          border: "solid 1px black",
           height: "100%",
           display: "flex",
-          "& p": { margin: "auto", fontSize: `${theme.fontSizes.l}` },
+          "& h1": {
+            margin: "auto",
+            fontSize: `${theme.fontSizes.l}`,
+            color: "whitesmoke",
+            fontWeight: "bold",
+          },
         }}
       >
-        <Typography>File.Keyword.Finder</Typography>
+        <Typography component={"h1"} variant="h1">
+          File.Keyword.Finder
+        </Typography>
       </Box>
-      <Box sx={{ flexGrow: 2, border: "solid 1px red", height: "100%" }}></Box>
+      <Box sx={{ flexGrow: 2, height: "100%" }}></Box>
     </StyledNavBar>
   );
 };

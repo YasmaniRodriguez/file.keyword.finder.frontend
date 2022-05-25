@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 const StyledMain = styled.main`
   height: 90vh;
-  background-color: green;
+  background-color: #ebebeb;
 `;
 
 export default StyledMain;

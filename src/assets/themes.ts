@@ -2,6 +2,11 @@ const theme = {
   colors: {
     primary: "var(--brand-color_1)",
     secondary: "var(--brand-color_2)",
+    tertiary: "var(--brand-color_3)",
+    quaternary: "var(--brand-color_4)",
+    pentarius: "var(--brand-color_5)",
+    senary: "var(--brand-color_6)",
+    septenary: "var(--brand-color_7)",
   },
   fontSizes: {
     xs: "0.5rem",

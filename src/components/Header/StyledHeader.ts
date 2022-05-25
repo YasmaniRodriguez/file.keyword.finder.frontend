@@ -5,7 +5,7 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   height: 10vh;
-  border: solid 1px ${theme.colors.primary};
+  background-color: ${theme.colors.primary};
 `;
 
 export default StyledHeader;
