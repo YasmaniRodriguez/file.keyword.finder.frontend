@@ -5,10 +5,7 @@ const StyledHome = styled.section`
   flex-direction: column;
   flex-grow: 1;
   width: auto;
-  & > div {
-    flex-grow: 10;
-    display: flex;
-  }
+  background-color: fuchsia;
 `;
 
 export default StyledHome;

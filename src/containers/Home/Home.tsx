@@ -1,8 +1,13 @@
 import React from "react";
 import StyledHome from "./StyledHome";
+import Drop from "../../components/Drop/Drop";
 
 const Home = () => {
-  return <StyledHome></StyledHome>;
+  return (
+    <StyledHome>
+      <Drop />
+    </StyledHome>
+  );
 };
 
 export default Home;
