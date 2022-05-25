@@ -4,8 +4,9 @@ const StyledHome = styled.section`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  width: auto;
-  background-color: fuchsia;
+  width: 100%;
+  height: 100%;
+  position: relative;
 `;
 
 export default StyledHome;
