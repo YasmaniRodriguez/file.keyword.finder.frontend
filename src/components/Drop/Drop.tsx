@@ -8,7 +8,15 @@ import "@uppy/dashboard/dist/style.css";
 
 interface Props {}
 
-const uppy = new Uppy();
+const uppy = new Uppy({
+  autoProceed: true,
+  restrictions: {
+    maxFileSize: 1000000,
+    maxNumberOfFiles: 100,
+    minNumberOfFiles: 1,
+    allowedFileTypes: [".pdf"],
+  },
+});
 
 uppy.use(Tus, { endpoint: "https://tusd.tusdemo.net/files/" });
 uppy.on("complete", (result) => {

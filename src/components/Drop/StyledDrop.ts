@@ -2,11 +2,14 @@ import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 
 const StyledDrop = styled(Box)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 90vh;
+  position: relative;
+
   & .uppy-Container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     & .uppy-Root {
       & .uppy-Dashboard {
         & .uppy-Dashboard-inner {
