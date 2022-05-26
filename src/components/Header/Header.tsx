@@ -26,7 +26,7 @@ const NavBar = (props: Props) => {
         }}
       >
         <Typography component={"h1"} variant="h1">
-          File.Keyword.Finder
+          eFlyers Reader
         </Typography>
         <Box
           sx={{

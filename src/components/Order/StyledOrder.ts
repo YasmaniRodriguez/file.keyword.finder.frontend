@@ -1,15 +1,16 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Paper, Box } from "@mui/material";
 
 const StyledOrder = styled(Box)`
-  margin: auto;
-  min-height: 90vh;
-  width: 100%;
+  width: 80%;
+  min-height: 80%;
   display: flex;
-  padding: 20px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+  & div {
+    flex: 350px;
+    height: 70vh;
+    width: auto;
+  }
 `;
 
 export default StyledOrder;

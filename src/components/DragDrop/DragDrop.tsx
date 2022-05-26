@@ -1,7 +1,7 @@
 import React from "react";
 import Uppy from "@uppy/core";
 import Tus from "@uppy/tus";
-import StyledDrop from "./StyledDrop";
+import StyledDragDrop from "./StyledDragDrop";
 import "@uppy/core/dist/style.css";
 import "@uppy/dashboard/dist/style.css";
 
@@ -22,8 +22,8 @@ uppy.on("complete", (result) => {
   console.log("Upload result:", result);
 });
 
-const Drop = (props: Props) => {
-  return <StyledDrop uppy={uppy} />;
+const DragDrop = (props: Props) => {
+  return <StyledDragDrop uppy={uppy} />;
 };
 
-export default Drop;
+export default DragDrop;

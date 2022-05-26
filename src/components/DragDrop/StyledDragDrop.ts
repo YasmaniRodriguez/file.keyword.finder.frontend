@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Dashboard } from "@uppy/react";
 
-const StyledDrop = styled(Dashboard)`
+const StyledDragDrop = styled(Dashboard)`
   margin: auto;
   & .uppy-Container {
     position: absolute;
@@ -21,4 +21,4 @@ const StyledDrop = styled(Dashboard)`
   }
 `;
 
-export default StyledDrop;
+export default StyledDragDrop;
