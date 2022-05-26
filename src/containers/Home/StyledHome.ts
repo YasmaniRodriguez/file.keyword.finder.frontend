@@ -5,7 +5,7 @@ const StyledHome = styled.section`
   flex-direction: column;
   flex-grow: 1;
   width: 100%;
-  min-height: 100%;
+  min-height: 90vh;
 `;
 
 export default StyledHome;

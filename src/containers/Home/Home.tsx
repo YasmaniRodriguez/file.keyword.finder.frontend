@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import StyledHome from "./StyledHome";
 import Drop from "../../components/Drop/Drop";
 import Warranty from "../Warranty/Warranty";
-import Order from "../Order/Order";
+import Order from "../../components/Order/Order";
 import { AppContext } from "../../contexts/AppContext";
 import { Box } from "@mui/material";
 
@@ -12,9 +12,8 @@ const Home = () => {
     <StyledHome>
       <Box
         sx={{
-          height: "90vh",
+          height: "100%",
           display: "flex",
-          position: "relative",
           background: "#e2e2e2",
         }}
       >
