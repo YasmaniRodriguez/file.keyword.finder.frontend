@@ -3,19 +3,14 @@ import { theme } from "../../assets/themes";
 
 const StyledWarranty = styled.section`
   min-height: 70vh;
-  width: 100%;
+  max-width: 100%;
   display: flex;
-  border: solid 1px green;
+  flex-wrap: wrap;
+  gap: 0.1rem;
 
-  & div {
-    margin: auto;
+  & > div {
+    flex: 350px;
     display: flex;
-    height: 100%;
-  }
-
-  & span {
-    height: 300px;
-    width: 2px;
   }
 `;
 
