@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import StyledNavBar from "./StyledHeader";
 import { Box, Typography } from "@mui/material";
 import { theme } from "../../assets/themes";
 import { ArrowRight } from "@mui/icons-material";
+import { AppContext } from "../../contexts/AppContext";
 
 interface Props {}
 
 const NavBar = (props: Props) => {
+  const appCtx = useContext(AppContext);
   return (
     <StyledNavBar>
       <Box
@@ -28,7 +30,7 @@ const NavBar = (props: Props) => {
         </Typography>
         <Box
           sx={{
-            display: "flex",
+            display: appCtx?.order ? "flex" : "none",
             alignItems: "center",
             "& p": {
               fontSize: `${theme.fontSizes.m}`,
@@ -40,7 +42,7 @@ const NavBar = (props: Props) => {
           <ArrowRight
             sx={{ color: "whitesmoke", height: "50px", width: "50px" }}
           />
-          <Typography>9D7eHzOGSVd55iVNFeEBewkM5CA2</Typography>
+          <Typography>{appCtx?.order}</Typography>
         </Box>
       </Box>
       <Box sx={{ flexGrow: 2, height: "100%" }}></Box>

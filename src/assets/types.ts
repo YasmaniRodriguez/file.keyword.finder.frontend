@@ -7,6 +7,14 @@ interface Settings {
   languaje: string;
   theme?: string;
 }
+
+interface AppContextType {
+  settings: Settings;
+  setSettings: Dispatch<SetStateAction<Settings>>;
+  order: string | undefined;
+  setOrder: Dispatch<SetStateAction<string | undefined>>;
+}
+
 interface DialogContextType {
   open: boolean;
   title: string;
@@ -28,4 +36,9 @@ interface SnackBarContextType {
   changeSeverity: (arg0: AlertColor) => void;
   changeAnchor: (arg0: SnackbarOrigin) => void;
 }
-export type { Settings, DialogContextType, SnackBarContextType };
+export type {
+  Settings,
+  AppContextType,
+  DialogContextType,
+  SnackBarContextType,
+};

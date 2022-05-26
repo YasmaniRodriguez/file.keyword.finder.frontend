@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { AppContextProvider } from "./contexts/AppContext";
 import { DialogContextProvider } from "./contexts/DialogContext";
 import { SnackBarContextProvider } from "./contexts/SnackBarContext";
 import Header from "./components/Header/Header";
@@ -21,16 +22,18 @@ function App() {
     <ThemeProvider theme={theme}>
       <SnackBarContextProvider>
         <DialogContextProvider>
-          <BrowserRouter>
-            <Header />
-            <Main>
-              <Routes>
-                <Route path="" element={<Home />}></Route>
-                <Route path="/order" element={<Order />}></Route>
-              </Routes>
-            </Main>
-            <Footer />
-          </BrowserRouter>
+          <AppContextProvider>
+            <BrowserRouter>
+              <Header />
+              <Main>
+                <Routes>
+                  <Route path="" element={<Home />}></Route>
+                  <Route path="/order" element={<Order />}></Route>
+                </Routes>
+              </Main>
+              <Footer />
+            </BrowserRouter>
+          </AppContextProvider>
         </DialogContextProvider>
       </SnackBarContextProvider>
     </ThemeProvider>
