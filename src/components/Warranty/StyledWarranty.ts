@@ -6,11 +6,26 @@ const StyledWarranty = styled.section`
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.1rem;
 
-  & > div {
+  & div {
     flex: 350px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    & div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      & h5 {
+        margin-top: 10px;
+      }
+      & p {
+        padding: 10px;
+        text-align: center;
+      }
+    }
   }
 `;
 
