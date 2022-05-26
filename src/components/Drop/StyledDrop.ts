@@ -1,10 +1,8 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Dashboard } from "@uppy/react";
 
-const StyledDrop = styled(Box)`
-  height: 90vh;
-  position: relative;
-  background: #e2e2e2;
+const StyledDrop = styled(Dashboard)`
+  margin: auto;
   & .uppy-Container {
     position: absolute;
     top: 50%;

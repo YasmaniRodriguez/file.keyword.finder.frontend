@@ -1,6 +1,5 @@
 import React from "react";
 import Uppy from "@uppy/core";
-import { Dashboard } from "@uppy/react";
 import Tus from "@uppy/tus";
 import StyledDrop from "./StyledDrop";
 import "@uppy/core/dist/style.css";
@@ -24,11 +23,7 @@ uppy.on("complete", (result) => {
 });
 
 const Drop = (props: Props) => {
-  return (
-    <StyledDrop>
-      <Dashboard uppy={uppy}></Dashboard>
-    </StyledDrop>
-  );
+  return <StyledDrop uppy={uppy} />;
 };
 
 export default Drop;
