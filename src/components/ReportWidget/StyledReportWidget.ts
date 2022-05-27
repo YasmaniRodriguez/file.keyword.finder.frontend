@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 
 const StyledReportWidget = styled(Box)`
-  border: solid 1px red;
+  flex: 350px;
+  min-height: 70vh;
+  flex-grow: 1;
   /* & div {
     flex-grow: 1;
     display: block;

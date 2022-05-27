@@ -5,11 +5,10 @@ import StyledReportWidget from "./StyledReportWidget";
 const ReportWidget = () => {
   return (
     <StyledReportWidget>
-      <Box>
-        <Typography variant="h5" component={"h5"}>
-          Preliminary report
-        </Typography>
-      </Box>
+      <Typography variant="h5" component={"h5"}>
+        Preliminary report
+      </Typography>
+      <Box></Box>
     </StyledReportWidget>
   );
 };

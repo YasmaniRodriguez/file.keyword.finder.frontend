@@ -9,19 +9,14 @@ const StyledOrder = styled(Box)`
   flex-wrap: wrap;
   position: relative;
   width: 80%;
-  min-height: 75vh;
+  min-height: 70vh;
   margin-top: 20px;
 
-  & div {
-    flex: 350px;
-    min-height: 75vh;
-    flex-grow: 1;
-    & h5 {
-      text-align: center;
-      font-weight: bold;
-      color: ${theme.colors.primary};
-      padding: 10px;
-    }
+  & div > h5 {
+    text-align: center;
+    font-weight: bold;
+    color: ${theme.colors.primary};
+    padding: 10px;
   }
 `;
 
