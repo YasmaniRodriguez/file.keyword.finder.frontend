@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import { Paper, Box } from "@mui/material";
+import { Box } from "@mui/material";
 
 const StyledOrder = styled(Box)`
+  background: #fff;
   width: 80%;
   min-height: 80%;
   display: flex;
@@ -9,7 +10,6 @@ const StyledOrder = styled(Box)`
   & div {
     flex: 350px;
     height: 70vh;
-    width: auto;
   }
 `;
 

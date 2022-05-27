@@ -5,23 +5,21 @@ import StyledReportWidget from "./StyledReportWidget";
 const ReportWidget = () => {
   return (
     <StyledReportWidget>
-      <Box
-        sx={{
-          flexGrow: 1,
-          display: "block",
-        }}
-      >
-        <Box sx={{ height: "10%", border: "solid 1px black" }}>
-          <Typography
-            sx={{ textAlign: "center" }}
-            variant="h4"
-            component={"h4"}
-          >
-            Informe preliminar
+      <Box>
+        <Box>
+          <Typography variant="h4" component={"h4"}>
+            Preliminary report
           </Typography>
         </Box>
-
-        <Box></Box>
+        <Box>
+          <Box
+            sx={{
+              margin: "10px",
+              minHeight: "60vh",
+              background: "#e2e2e2",
+            }}
+          ></Box>
+        </Box>
       </Box>
     </StyledReportWidget>
   );

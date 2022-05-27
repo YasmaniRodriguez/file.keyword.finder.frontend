@@ -1,12 +1,12 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import OrderWidget from "../Order/Order";
+import Order from "../Order/Order";
 import StyledOrderWrapper from "./StyledOrderWrapper";
 
 const OrderWrapper = () => {
   return (
     <StyledOrderWrapper>
-      <OrderWidget />
+      <Order />
       <Box
         sx={{
           display: "flex",
