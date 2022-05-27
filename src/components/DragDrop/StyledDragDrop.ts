@@ -1,10 +1,7 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Dashboard } from "@uppy/react";
 
-const StyledDragDrop = styled(Box)`
-  max-height: 70%;
-  max-width: 80%;
-  margin: 5vh auto;
+const StyledDragDrop = styled(Dashboard)`
   & .uppy-Container {
     & .uppy-Root {
       & .uppy-Dashboard {

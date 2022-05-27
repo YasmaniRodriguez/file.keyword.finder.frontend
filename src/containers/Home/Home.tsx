@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import StyledHome from "./StyledHome";
 import Copywriting from "../../components/Copywriting/Copywriting";
-import DragDrop from "../../components/DragDrop/DragDrop";
+import UploadWrapper from "../../components/UploadWrapper/UploadWrapper";
 import Warranty from "../../components/Warranty/Warranty";
 import OrderWrapper from "../../components/OrderWrapper/OrderWrapper";
 import { AppContext } from "../../contexts/AppContext";
@@ -17,11 +17,13 @@ const Home = () => {
           display: "flex",
         }}
       >
-        {appCtx?.order ? <OrderWrapper /> : <DragDrop />}
+        {appCtx?.order ? <OrderWrapper /> : <UploadWrapper />}
       </Box>
       <Copywriting
-        header="Everything is ready to go"
-        subheader="Absolutely amazing!"
+        header={
+          appCtx?.order ? "Everything is ready to go" : "Let's do it together"
+        }
+        subheader={appCtx?.order ? "Absolutely amazing!" : "I'm very anxious"}
       />
       <Warranty />
     </StyledHome>

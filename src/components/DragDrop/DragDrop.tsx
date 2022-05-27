@@ -1,7 +1,6 @@
 import React from "react";
 import Uppy from "@uppy/core";
 import Tus from "@uppy/tus";
-import { Dashboard } from "@uppy/react";
 import StyledDragDrop from "./StyledDragDrop";
 import "@uppy/core/dist/style.css";
 import "@uppy/dashboard/dist/style.css";
@@ -24,11 +23,7 @@ uppy.on("complete", (result) => {
 });
 
 const DragDrop = (props: Props) => {
-  return (
-    <StyledDragDrop>
-      <Dashboard uppy={uppy} />
-    </StyledDragDrop>
-  );
+  return <StyledDragDrop uppy={uppy} />;
 };
 
 export default DragDrop;
