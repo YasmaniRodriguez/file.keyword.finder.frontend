@@ -1,6 +1,7 @@
 import React from "react";
 import StyledWarranty from "./StyledWarranty";
 import { Box, Typography } from "@mui/material";
+import { theme } from "../../assets/themes";
 
 interface Props {}
 
@@ -30,14 +31,14 @@ const Warranty = (props: Props) => {
             content: `''`,
             height: "100px",
             width: "1px",
-            background: "#e2e2e2",
+            background: theme.colors.primary,
             display: { xs: "none", lg: "block" },
           },
           "::after": {
             content: `''`,
             height: "100px",
             width: "1px",
-            background: "#e2e2e2",
+            background: theme.colors.primary,
             display: { xs: "none", lg: "block" },
           },
         }}

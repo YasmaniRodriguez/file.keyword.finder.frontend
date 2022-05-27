@@ -15,7 +15,6 @@ const Home = () => {
         sx={{
           minHeight: "90vh",
           display: "flex",
-          background: "#e2e2e2",
         }}
       >
         {appCtx?.order ? <OrderWrapper /> : <DragDrop />}

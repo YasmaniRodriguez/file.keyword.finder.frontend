@@ -5,7 +5,9 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   height: 10vh;
-  background-color: ${theme.colors.tertiary};
+  box-shadow: 0 3px 2px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 11%);
+  border: 0;
+  border-bottom: 3px solid #ffffff;
 `;
 
 export default StyledHeader;

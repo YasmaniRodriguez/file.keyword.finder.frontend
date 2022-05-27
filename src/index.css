@@ -1,8 +1,8 @@
 :root {
-  --brand-color_1: #8fe6d3;
-  --brand-color_2: #d28fe6;
-  --brand-color_3: #9a95ff;
-  --brand-color_4: #ffb895;
+  --brand-color_1: rgb(143, 230, 211);
+  --brand-color_2: rgb(210, 143, 230);
+  --brand-color_3: rgb(154, 149, 255);
+  --brand-color_4: rgb(255, 184, 149);
 }
 
 * {
