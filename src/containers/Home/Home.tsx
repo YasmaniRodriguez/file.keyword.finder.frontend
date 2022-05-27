@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import StyledHome from "./StyledHome";
+import Copywriting from "../../components/Copywriting/Copywriting";
 import DragDrop from "../../components/DragDrop/DragDrop";
 import Warranty from "../../components/Warranty/Warranty";
 import OrderWrapper from "../../components/OrderWrapper/OrderWrapper";
@@ -19,7 +20,10 @@ const Home = () => {
       >
         {appCtx?.order ? <OrderWrapper /> : <DragDrop />}
       </Box>
-
+      <Copywriting
+        header="Everything is ready to go"
+        subheader="Absolutely amazing!"
+      />
       <Warranty />
     </StyledHome>
   );

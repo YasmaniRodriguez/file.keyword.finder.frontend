@@ -1,5 +1,4 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
 import Uppy from "@uppy/core";
 import Tus from "@uppy/tus";
 import { Dashboard } from "@uppy/react";
@@ -28,20 +27,6 @@ const DragDrop = (props: Props) => {
   return (
     <StyledDragDrop>
       <Dashboard uppy={uppy} />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "10px",
-        }}
-      >
-        <Typography variant="h5" component={"h5"}>
-          Everything is ready to go
-        </Typography>
-        <Typography>Absolutely amazing!</Typography>
-      </Box>
     </StyledDragDrop>
   );
 };

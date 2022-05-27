@@ -16,7 +16,7 @@ const AppContextProvider = ({ children }: Props) => {
 
   const defaultOrder = "9D7eHzOGSVd55iVNFeEBewkM5CA2";
 
-  const [order, setOrder] = useState<string | undefined>();
+  const [order, setOrder] = useState<string | undefined>(defaultOrder);
 
   return (
     <AppContext.Provider
