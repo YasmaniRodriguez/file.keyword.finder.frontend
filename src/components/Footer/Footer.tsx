@@ -7,7 +7,7 @@ const Main = (props: Props) => {
   return (
     <StyledFooter>
       <Box sx={{ margin: "auto" }}>
-        <Typography>© 2022 Copyright Alliance</Typography>
+        <Typography>© 2022 WordLab</Typography>
       </Box>
     </StyledFooter>
   );

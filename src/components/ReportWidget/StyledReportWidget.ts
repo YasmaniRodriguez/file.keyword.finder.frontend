@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 
 const StyledReportWidget = styled(Box)`
-  & div {
+  border: solid 1px red;
+  /* & div {
     flex-grow: 1;
     display: block;
     & div:nth-child(1) {
@@ -12,7 +13,7 @@ const StyledReportWidget = styled(Box)`
       justify-content: center;
       padding: 20px;
     }
-  }
+  } */
 `;
 
 export default StyledReportWidget;

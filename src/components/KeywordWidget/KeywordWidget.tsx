@@ -6,19 +6,12 @@ const KeywordWidget = () => {
   return (
     <StyledKeywordWidget>
       <Box>
-        <Box sx={{ maxHeight: "5%" }}>
-          <Typography
-            variant="h4"
-            component={"h4"}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Keywords
-          </Typography>
-        </Box>
+        <Typography variant="h5" component={"h5"}>
+          Keywords
+        </Typography>
+      </Box>
+      {/* <Box>
+
         <Box>
           <Box
             sx={{
@@ -48,7 +41,7 @@ const KeywordWidget = () => {
             <Button variant="outlined">Enviar</Button>
           </Box>
         </Box>
-      </Box>
+      </Box> */}
     </StyledKeywordWidget>
   );
 };

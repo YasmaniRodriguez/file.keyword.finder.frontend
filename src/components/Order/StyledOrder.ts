@@ -3,15 +3,25 @@ import { Box } from "@mui/material";
 import { theme } from "../../assets/themes";
 
 const StyledOrder = styled(Box)`
-  width: 80%;
-  min-height: 80%;
+  margin: auto;
+  border: solid 1px #e2e2e2;
   display: flex;
   flex-wrap: wrap;
-  border: solid 1px ${theme.colors.primary};
-  border-radius: 5px;
+  position: relative;
+  width: 80%;
+  min-height: 75vh;
+  margin-top: 20px;
+
   & div {
     flex: 350px;
-    height: 70vh;
+    min-height: 75vh;
+    flex-grow: 1;
+    & h5 {
+      text-align: center;
+      font-weight: bold;
+      color: ${theme.colors.primary};
+      padding: 10px;
+    }
   }
 `;
 

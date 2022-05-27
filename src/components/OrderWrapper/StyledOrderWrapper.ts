@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 
 const StyledOrderWrapper = styled(Box)`
-  height: 80vh;
+  min-height: 80vh;
   display: flex;
   /* align-items: center;
   display: flex;
