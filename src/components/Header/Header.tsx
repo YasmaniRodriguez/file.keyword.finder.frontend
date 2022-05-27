@@ -26,7 +26,7 @@ const NavBar = (props: Props) => {
         }}
       >
         <Typography component={"h1"} variant="h1">
-          eFlyers Reader
+          Flyers Reader
         </Typography>
         <Box
           sx={{
