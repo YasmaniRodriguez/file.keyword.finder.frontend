@@ -8,7 +8,7 @@ const StyledCopywriting = styled(Box)`
   align-items: center;
   padding: 10px;
   width: 100%;
-  min-height: 15vh;
+  min-height: 10vh;
 `;
 
 export default StyledCopywriting;
