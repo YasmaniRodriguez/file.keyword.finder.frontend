@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import StyledTemplateListWidget from "./StyledTemplateListWidget";
 import {
   OutlinedInput,
@@ -20,7 +20,7 @@ const MenuProps = {
   },
 };
 
-const names = [
+const templates = [
   "Web Full Stack",
   "Business Analyst",
   "UX Designer",
@@ -30,10 +30,10 @@ const names = [
   "DevOps",
 ];
 
-function getStyles(name: string, personName: readonly string[], theme: Theme) {
+function getStyles(name: string, template: readonly string[], theme: Theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
+      template.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
@@ -41,16 +41,13 @@ function getStyles(name: string, personName: readonly string[], theme: Theme) {
 
 const MenuListWidget = () => {
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState<string[]>([]);
+  const [template, setTemplate] = useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+  const handleChange = (event: SelectChangeEvent<typeof template>) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value,
-    );
+    setTemplate(typeof value === "string" ? value.split(",") : value);
   };
 
   return (
@@ -58,7 +55,7 @@ const MenuListWidget = () => {
       <FormControl fullWidth>
         <Select
           displayEmpty
-          value={personName}
+          value={template}
           onChange={handleChange}
           input={<OutlinedInput />}
           renderValue={(selected) => {
@@ -74,11 +71,11 @@ const MenuListWidget = () => {
           <MenuItem disabled value="">
             <em>Select a tamplate</em>
           </MenuItem>
-          {names.map((name) => (
+          {templates.map((name) => (
             <MenuItem
               key={name}
               value={name}
-              style={getStyles(name, personName, theme)}
+              style={getStyles(name, template, theme)}
             >
               {name}
             </MenuItem>
