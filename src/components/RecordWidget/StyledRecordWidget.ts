@@ -4,13 +4,12 @@ import { Box } from "@mui/material";
 
 const StyledRecordWidget = styled(Box)`
   flex: 350px;
-  min-height: 70vh;
+  min-height: 100%;
   flex-grow: 1;
-
+  padding: 10px;
   & .order-row {
     display: flex;
     padding: 5px;
-    border: solid 1px ${theme.colors.secondary};
     & p:nth-child(1) {
       width: 20%;
       font-weight: bold;
