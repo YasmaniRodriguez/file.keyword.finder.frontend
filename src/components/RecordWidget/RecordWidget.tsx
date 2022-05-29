@@ -3,7 +3,11 @@ import { Box, Typography } from "@mui/material";
 import StyledRecordWidget from "./StyledRecordWidget";
 import Cloud from "../Cloud/Cloud";
 
-interface Props {}
+interface Props {
+  record: string;
+  files: number;
+  amount: number;
+}
 
 const RecordWidget = (props: Props) => {
   return (
@@ -11,12 +15,33 @@ const RecordWidget = (props: Props) => {
       <Typography variant="h5" component={"h5"}>
         Summary
       </Typography>
-      <Box>Record</Box>
-      <Box>Files</Box>
+      <Box className="order-row">
+        <Typography variant="h5" component={"p"}>
+          Record
+        </Typography>
+        <Typography variant="h5" component={"p"}>
+          {props.record}
+        </Typography>
+      </Box>
+      <Box className="order-row">
+        <Typography variant="h5" component={"p"}>
+          Files
+        </Typography>
+        <Typography variant="h5" component={"p"}>
+          {props.files}
+        </Typography>
+      </Box>
 
       <Cloud />
 
-      <Box>Amount</Box>
+      <Box className="order-row">
+        <Typography variant="h5" component={"p"}>
+          Amount
+        </Typography>
+        <Typography variant="h5" component={"p"}>
+          {props.amount}
+        </Typography>
+      </Box>
     </StyledRecordWidget>
   );
 };
