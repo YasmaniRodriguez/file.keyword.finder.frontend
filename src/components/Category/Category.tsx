@@ -1,11 +1,25 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { StyledCategory } from "./StyledCategory";
+import {
+  StyledCategory,
+  CategoryList,
+  CategoryListItem,
+} from "./StyledCategory";
 
-interface Props {}
+interface Props {
+  list: string[];
+}
 
-const Category = (props: Props) => {
-  return <StyledCategory></StyledCategory>;
+const Category = ({ list = [] }: Props) => {
+  return (
+    <StyledCategory>
+      <CategoryList>
+        {list.map((word, index) => (
+          <CategoryListItem index={index}>{word}</CategoryListItem>
+        ))}
+      </CategoryList>
+    </StyledCategory>
+  );
 };
 
 export default Category;

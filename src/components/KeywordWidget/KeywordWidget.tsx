@@ -5,6 +5,20 @@ import StyledKeywordWidget from "./StyledKeywordWidget";
 import Category from "../Category/Category";
 
 const KeywordWidget = () => {
+  const keywords = [
+    "nodejs",
+    "reactjs",
+    "mongodb",
+    "express",
+    "nestjs",
+    "nextjs",
+    "mysql",
+    "typescript",
+    "git",
+    "java",
+    "pyton",
+    "c++",
+  ];
   return (
     <StyledKeywordWidget>
       <Typography className="order-title" variant="h5" component={"h5"}>
@@ -18,7 +32,7 @@ const KeywordWidget = () => {
           placeholder="Add keywords to find"
           fullWidth
         />
-        <Category />
+        <Category list={keywords} />
         <Button
           sx={{ marginLeft: "50%", transform: "translateX(-50%)" }}
           variant="outlined"
