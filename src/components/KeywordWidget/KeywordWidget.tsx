@@ -18,6 +18,7 @@ const KeywordWidget = () => {
     "java",
     "pyton",
     "c++",
+    "figma",
   ];
   return (
     <StyledKeywordWidget>

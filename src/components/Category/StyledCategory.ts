@@ -40,7 +40,7 @@ const CategoryListItem = styled.li`
   padding: 0.3rem;
   margin: 0.2rem;
   font-size: 1.2rem;
-
+  border-radius: 5px;
   ${generateMultiColorCategory}
 `;
 
