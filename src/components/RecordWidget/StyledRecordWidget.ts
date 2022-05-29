@@ -10,10 +10,11 @@ const StyledRecordWidget = styled(Box)`
   & .order-row {
     display: flex;
     padding: 5px;
+    border: solid 1px ${theme.colors.secondary};
     & p:nth-child(1) {
       width: 20%;
       font-weight: bold;
-      color: ${theme.colors.primary};
+      color: ${theme.colors.secondary};
     }
     & p:nth-child(1)::after {
       content: ":";

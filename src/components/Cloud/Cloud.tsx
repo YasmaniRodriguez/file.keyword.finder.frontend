@@ -19,6 +19,7 @@ import {
   siAwslambda,
 } from "simple-icons/icons";
 import { ICloud } from "react-icon-cloud";
+import { theme } from "../../assets/themes";
 import Icon from "../Icon/Icon";
 
 interface Props {}
@@ -43,13 +44,20 @@ const staticIcons = [
 ];
 
 const cloudProps: Omit<ICloud, "children"> = {
+  canvasProps: {
+    style: {
+      height: "100%",
+      width: "100%",
+    },
+  },
   containerProps: {
     style: {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      height: "50vh",
+      height: "40vh",
+      border: `solid 1px ${theme.colors.secondary}`,
     },
   },
   // https://www.goat1000.com/tagcanvas-options.php
