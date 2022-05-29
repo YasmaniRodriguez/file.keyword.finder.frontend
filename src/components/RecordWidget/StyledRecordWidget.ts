@@ -10,18 +10,19 @@ const StyledRecordWidget = styled(Box)`
   & .order-row {
     display: flex;
     padding: 5px;
+    & p {
+      font-size: 1.5vw;
+    }
     & p:nth-child(1) {
-      width: 20%;
       font-weight: bold;
       color: ${theme.colors.secondary};
-    }
-    & p:nth-child(1)::after {
-      content: ":";
+      ::after {
+        content: ":";
+      }
     }
     & p:nth-child(2) {
-      width: 80%;
+      width: 100%;
       margin-left: 5px;
-      font-size: 1.5vw;
     }
   }
 `;
