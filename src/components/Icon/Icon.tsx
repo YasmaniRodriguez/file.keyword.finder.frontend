@@ -1,5 +1,5 @@
 import React from "react";
-import StyledCloudIcon from "./StyledCloudIcon";
+import StyledIcon from "./StyledIcon";
 
 import { renderSimpleIcon, SimpleIcon } from "react-icon-cloud";
 
@@ -10,7 +10,7 @@ interface Props {
 const Icon = (props: Props) => {
   const { icon } = props;
   return (
-    <StyledCloudIcon>
+    <StyledIcon>
       {renderSimpleIcon({
         icon,
         size: 42,
@@ -21,7 +21,7 @@ const Icon = (props: Props) => {
           onClick: (e: any) => e.preventDefault(),
         },
       })}
-    </StyledCloudIcon>
+    </StyledIcon>
   );
 };
 

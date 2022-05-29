@@ -1,17 +1,22 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import StyledRecordWidget from "./StyledRecordWidget";
-import WordCloud from "../WordCloud/WordCloud";
+import Cloud from "../Cloud/Cloud";
 
-const RecordWidget = () => {
+interface Props {}
+
+const RecordWidget = (props: Props) => {
   return (
     <StyledRecordWidget>
       <Typography variant="h5" component={"h5"}>
-        Preview
+        Summary
       </Typography>
-      <Box>
-        <WordCloud />
-      </Box>
+      <Box>Record</Box>
+      <Box>Files</Box>
+
+      <Cloud />
+
+      <Box>Amount</Box>
     </StyledRecordWidget>
   );
 };

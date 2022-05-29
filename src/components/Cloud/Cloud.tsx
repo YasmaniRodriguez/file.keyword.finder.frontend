@@ -1,5 +1,5 @@
 import React from "react";
-import StyledWordCloud from "./StyledWordCloud";
+import StyledCloud from "./StyledCloud";
 import {
   siTypescript,
   siJavascript,
@@ -18,8 +18,8 @@ import {
   siCplusplus,
   siAwslambda,
 } from "simple-icons/icons";
-import { Cloud, ICloud } from "react-icon-cloud";
-import CloudIcon from "../CloudIcon/CloudIcon";
+import { ICloud } from "react-icon-cloud";
+import Icon from "../Icon/Icon";
 
 interface Props {}
 
@@ -66,16 +66,14 @@ const cloudProps: Omit<ICloud, "children"> = {
   },
 };
 
-const WordCloud = (props: Props) => {
+const Cloud = (props: Props) => {
   return (
-    <StyledWordCloud>
-      <Cloud {...cloudProps}>
-        {staticIcons.map((i) => (
-          <CloudIcon icon={i} />
-        ))}
-      </Cloud>
-    </StyledWordCloud>
+    <StyledCloud {...cloudProps}>
+      {staticIcons.map((icon) => (
+        <Icon icon={icon} />
+      ))}
+    </StyledCloud>
   );
 };
 
-export default WordCloud;
+export default Cloud;
