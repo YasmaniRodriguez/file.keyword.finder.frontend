@@ -1,19 +1,19 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import StyledPreview from "./StyledPreview";
+import StyledRecordWidget from "./StyledRecordWidget";
 import WordCloud from "../WordCloud/WordCloud";
 
-const Preview = () => {
+const RecordWidget = () => {
   return (
-    <StyledPreview>
+    <StyledRecordWidget>
       <Typography variant="h5" component={"h5"}>
         Preview
       </Typography>
       <Box>
         <WordCloud />
       </Box>
-    </StyledPreview>
+    </StyledRecordWidget>
   );
 };
 
-export default Preview;
+export default RecordWidget;

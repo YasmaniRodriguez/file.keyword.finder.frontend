@@ -11,7 +11,6 @@ const KeywordWidget = () => {
       </Typography>
       <Box>
         <TemplateListWidget />
-        <Divider sx={{ width: "100%", margin: "10px 0" }} />
         <TextField
           id="keywords"
           // value={props.keyword}

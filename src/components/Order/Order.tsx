@@ -1,12 +1,12 @@
 import React from "react";
 import StyledOrder from "./StyledOrder";
-import Preview from "../Preview/Preview";
+import RecordWidget from "../RecordWidget/RecordWidget";
 import KeywordWidget from "../KeywordWidget/KeywordWidget";
 
 const Order = () => {
   return (
     <StyledOrder>
-      <Preview />
+      <RecordWidget />
       <KeywordWidget />
     </StyledOrder>
   );
