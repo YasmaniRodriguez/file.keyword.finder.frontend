@@ -3,9 +3,20 @@ import StyledWordCloud from "./StyledWordCloud";
 import {
   siTypescript,
   siJavascript,
-  siJava,
   siNextdotjs,
   siNodedotjs,
+  siReact,
+  siExpress,
+  siNestjs,
+  siMongodb,
+  siJira,
+  siGit,
+  siMysql,
+  siFigma,
+  siJava,
+  siPython,
+  siCplusplus,
+  siAwslambda,
 } from "simple-icons/icons";
 import { Cloud, ICloud } from "react-icon-cloud";
 import CloudIcon from "../CloudIcon/CloudIcon";
@@ -15,9 +26,20 @@ interface Props {}
 const staticIcons = [
   siTypescript,
   siJavascript,
-  siJava,
   siNextdotjs,
   siNodedotjs,
+  siReact,
+  siExpress,
+  siNestjs,
+  siMongodb,
+  siJira,
+  siGit,
+  siMysql,
+  siFigma,
+  siJava,
+  siPython,
+  siCplusplus,
+  siAwslambda,
 ];
 
 const cloudProps: Omit<ICloud, "children"> = {
@@ -27,7 +49,7 @@ const cloudProps: Omit<ICloud, "children"> = {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      paddingTop: 40,
+      height: "50vh",
     },
   },
   // https://www.goat1000.com/tagcanvas-options.php
