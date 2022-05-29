@@ -8,6 +8,10 @@ const StyledHeader = styled.header`
   box-shadow: 0 3px 2px 0 rgb(0 0 0 / 10%), 0 1px 1px 0 rgb(0 0 0 / 11%);
   border: 0;
   border-bottom: 3px solid #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #ffffff;
 `;
 
 export default StyledHeader;
