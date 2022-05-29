@@ -29,7 +29,7 @@ const KeywordWidget = () => {
           sx={{ marginLeft: "50%", transform: "translateX(-50%)" }}
           variant="outlined"
         >
-          Enviar
+          send to process
         </Button>
       </Box>
     </StyledKeywordWidget>
