@@ -11,7 +11,8 @@ const StyledRecordWidget = styled(Box)`
     display: flex;
     padding: 5px;
     & p {
-      font-size: 1.5vw;
+      font-size: calc(0.9vw + 0.9vh + 0.5vmin);
+      text-overflow: ellipsis;
     }
     & p:nth-child(1) {
       font-weight: bold;
