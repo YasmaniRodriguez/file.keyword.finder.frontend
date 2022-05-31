@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import StyledTemplateListWidget from "./StyledTemplateListWidget";
+import React, { useState, useContext } from "react";
+import StyledTemplate from "./StyledTemplate";
 import {
   OutlinedInput,
   MenuItem,
@@ -7,7 +7,8 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { Theme, useTheme } from "@mui/material/styles";
+//import { Theme, useTheme } from "@mui/material/styles";
+import { AppContext } from "../../contexts/AppContext";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -20,27 +21,18 @@ const MenuProps = {
   },
 };
 
-const templates = [
-  "Web Full Stack",
-  "Business Analyst",
-  "UX Designer",
-  "QA Automation",
-  "Product Owner",
-  "Scrum Master",
-  "DevOps",
-];
+// function getStyles(name: string, template: readonly string[], theme: Theme) {
+//   return {
+//     fontWeight:
+//       template.indexOf(name) === -1
+//         ? theme.typography.fontWeightRegular
+//         : theme.typography.fontWeightMedium,
+//   };
+// }
 
-function getStyles(name: string, template: readonly string[], theme: Theme) {
-  return {
-    fontWeight:
-      template.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
-
-const MenuListWidget = () => {
-  const theme = useTheme();
+const Template = () => {
+  const appCtx = useContext(AppContext);
+  //const theme = useTheme();
   const [template, setTemplate] = useState<string[]>([]);
 
   const handleChange = (event: SelectChangeEvent<typeof template>) => {
@@ -51,7 +43,7 @@ const MenuListWidget = () => {
   };
 
   return (
-    <StyledTemplateListWidget>
+    <StyledTemplate>
       <FormControl fullWidth>
         <Select
           displayEmpty
@@ -60,7 +52,7 @@ const MenuListWidget = () => {
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>Select a template</em>;
+              return <>Select a template</>;
             }
 
             return selected.join(", ");
@@ -68,22 +60,19 @@ const MenuListWidget = () => {
           MenuProps={MenuProps}
           inputProps={{ "aria-label": "Without label" }}
         >
-          <MenuItem disabled value="">
-            <em>Select a tamplate</em>
-          </MenuItem>
-          {templates.map((name) => (
+          {appCtx?.availableTemplates?.map((template, key) => (
             <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, template, theme)}
+              key={key}
+              value={template.name}
+              //style={getStyles(template.name, template, theme)}
             >
-              {name}
+              {template.name}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-    </StyledTemplateListWidget>
+    </StyledTemplate>
   );
 };
 
-export default MenuListWidget;
+export default Template;

@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
+import { Clear as ClearIcon } from "@mui/icons-material";
 import {
   StyledCategory,
   CategoryList,
@@ -15,7 +16,12 @@ const Category = ({ list = [] }: Props) => {
     <StyledCategory>
       <CategoryList>
         {list.map((word, index) => (
-          <CategoryListItem index={index}>{word}</CategoryListItem>
+          <CategoryListItem index={index}>
+            {word}
+            <IconButton size="small">
+              <ClearIcon sx={{ fontSize: "medium" }} />
+            </IconButton>
+          </CategoryListItem>
         ))}
       </CategoryList>
     </StyledCategory>

@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import StyledOrder from "./StyledOrder";
 import RecordWidget from "../RecordWidget/RecordWidget";
 import KeywordWidget from "../KeywordWidget/KeywordWidget";
+import { AppContext } from "../../contexts/AppContext";
 
-const Order = () => {
+interface Props {}
+
+const Order = (props: Props) => {
+  const appCtx = useContext(AppContext);
   return (
     <StyledOrder>
-      <RecordWidget
-        record="9D7eHzOGSVd55iVNFeEBewkM5CA2"
-        files={1000}
-        amount={10000}
-      />
+      <RecordWidget record={appCtx?.order} files={1000} amount={10000} />
       <KeywordWidget />
     </StyledOrder>
   );

@@ -1,10 +1,12 @@
 import React from "react";
 import { Box, Typography, Button, TextField } from "@mui/material";
-import TemplateListWidget from "../TemplateListWidget/TemplateListWidget";
+import Template from "../Template/Template";
 import StyledKeywordWidget from "./StyledKeywordWidget";
 import Category from "../Category/Category";
 
-const KeywordWidget = () => {
+interface Props {}
+
+const KeywordWidget = (props: Props) => {
   const keywords = [
     "nodejs",
     "reactjs",
@@ -26,7 +28,7 @@ const KeywordWidget = () => {
         Keywords
       </Typography>
       <Box className="order-content">
-        <TemplateListWidget />
+        <Template />
         <TextField
           id="keywords"
           // value={props.keyword}

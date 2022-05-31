@@ -4,7 +4,7 @@ import StyledRecordWidget from "./StyledRecordWidget";
 import Cloud from "../Cloud/Cloud";
 
 interface Props {
-  record: string;
+  record?: string;
   files: number;
   amount: number;
 }

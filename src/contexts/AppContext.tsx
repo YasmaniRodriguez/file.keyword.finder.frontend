@@ -1,5 +1,6 @@
 import React, { createContext, useState, ReactNode } from "react";
 import { Settings, AppContextType } from "../assets/types";
+import { Templates } from "../assets/types";
 
 interface Props {
   children: JSX.Element | ReactNode;
@@ -16,7 +17,31 @@ const AppContextProvider = ({ children }: Props) => {
 
   const defaultOrder = "9D7eHzOGSVd55iVNFeEBewkM5CA2";
 
+  const defaultTemplates = [
+    {
+      name: "Web Full Stack",
+      keywords: [
+        "nodejs",
+        "reactjs",
+        "mongodb",
+        "express",
+        "nestjs",
+        "nextjs",
+        "mysql",
+        "typescript",
+        "git",
+        "java",
+        "pyton",
+        "c++",
+        "figma",
+      ],
+    },
+  ];
+
   const [order, setOrder] = useState<string | undefined>(defaultOrder);
+  const [availableTemplates, setAvailableTemplates] = useState<
+    Templates[] | undefined
+  >(defaultTemplates);
 
   return (
     <AppContext.Provider
@@ -25,6 +50,8 @@ const AppContextProvider = ({ children }: Props) => {
         setSettings,
         order,
         setOrder,
+        availableTemplates,
+        setAvailableTemplates,
       }}
     >
       {children}

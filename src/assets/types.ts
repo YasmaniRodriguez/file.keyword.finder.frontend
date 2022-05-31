@@ -13,6 +13,8 @@ interface AppContextType {
   setSettings: Dispatch<SetStateAction<Settings>>;
   order: string | undefined;
   setOrder: Dispatch<SetStateAction<string | undefined>>;
+  availableTemplates: Templates[] | undefined;
+  setAvailableTemplates: Dispatch<SetStateAction<Templates[] | undefined>>;
 }
 
 interface DialogContextType {
@@ -36,9 +38,16 @@ interface SnackBarContextType {
   changeSeverity: (arg0: AlertColor) => void;
   changeAnchor: (arg0: SnackbarOrigin) => void;
 }
+
+interface Templates {
+  name: string;
+  keywords: string[];
+}
+
 export type {
   Settings,
   AppContextType,
   DialogContextType,
   SnackBarContextType,
+  Templates,
 };
