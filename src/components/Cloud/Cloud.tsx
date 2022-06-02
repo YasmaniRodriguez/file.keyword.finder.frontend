@@ -76,8 +76,8 @@ const cloudProps: Omit<ICloud, "children"> = {
 const Cloud = (props: Props) => {
   return (
     <StyledCloud {...cloudProps}>
-      {staticIcons.map((icon) => (
-        <Icon icon={icon} />
+      {staticIcons.map((icon, key) => (
+        <Icon icon={icon} key={key} />
       ))}
     </StyledCloud>
   );

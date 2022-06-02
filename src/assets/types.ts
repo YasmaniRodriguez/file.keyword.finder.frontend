@@ -46,7 +46,7 @@ interface Templates {
 
 interface Orders {
   name: string;
-  files: number;
+  quantity: number;
   amount: number;
   keywords: string[];
 }

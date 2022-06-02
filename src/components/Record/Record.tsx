@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import StyledRecordWidget from "./StyledRecordWidget";
+import StyledRecord from "./StyledRecord";
 import Cloud from "../Cloud/Cloud";
 
 interface Props {
@@ -9,9 +9,9 @@ interface Props {
   amount: number;
 }
 
-const RecordWidget = (props: Props) => {
+const Record = (props: Props) => {
   return (
-    <StyledRecordWidget>
+    <StyledRecord>
       <Typography className="order-title" variant="h5" component={"h5"}>
         Record
       </Typography>
@@ -49,8 +49,8 @@ const RecordWidget = (props: Props) => {
         </Box>
         <Cloud />
       </Box>
-    </StyledRecordWidget>
+    </StyledRecord>
   );
 };
 
-export default RecordWidget;
+export default Record;

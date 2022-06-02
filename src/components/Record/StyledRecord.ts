@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { theme } from "../../assets/themes";
 import { Box } from "@mui/material";
 
-const StyledRecordWidget = styled(Box)`
+const StyledRecord = styled(Box)`
   flex: 350px;
   min-height: 100%;
   flex-grow: 1;
@@ -28,4 +28,4 @@ const StyledRecordWidget = styled(Box)`
   }
 `;
 
-export default StyledRecordWidget;
+export default StyledRecord;

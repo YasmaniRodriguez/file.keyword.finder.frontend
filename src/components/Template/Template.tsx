@@ -30,7 +30,11 @@ const MenuProps = {
 //   };
 // }
 
-const Template = () => {
+interface Props {
+  addKeyword: (arg0: string) => void;
+}
+
+const Template = (props: Props) => {
   const appCtx = useContext(AppContext);
   //const theme = useTheme();
   const [template, setTemplate] = useState<string[]>([]);
@@ -40,6 +44,14 @@ const Template = () => {
       target: { value },
     } = event;
     setTemplate(typeof value === "string" ? value.split(",") : value);
+
+    const tags = appCtx?.availableTemplates?.find(
+      (template) => template.name === value,
+    )?.keywords;
+
+    tags?.forEach((element) => {
+      props.addKeyword(element);
+    });
   };
 
   return (
