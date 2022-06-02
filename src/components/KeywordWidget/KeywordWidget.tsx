@@ -7,21 +7,7 @@ import Category from "../Category/Category";
 interface Props {}
 
 const KeywordWidget = (props: Props) => {
-  const keywords = [
-    "nodejs",
-    "reactjs",
-    "mongodb",
-    "express",
-    "nestjs",
-    "nextjs",
-    "mysql",
-    "typescript",
-    "git",
-    "java",
-    "pyton",
-    "c++",
-    "figma",
-  ];
+  const keywords = ["figma"];
   return (
     <StyledKeywordWidget>
       <Typography className="order-title" variant="h5" component={"h5"}>

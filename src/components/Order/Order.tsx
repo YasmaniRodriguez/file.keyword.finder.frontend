@@ -3,6 +3,7 @@ import StyledOrder from "./StyledOrder";
 import RecordWidget from "../RecordWidget/RecordWidget";
 import KeywordWidget from "../KeywordWidget/KeywordWidget";
 import { AppContext } from "../../contexts/AppContext";
+import { Orders } from "../../assets/types";
 
 interface Props {}
 

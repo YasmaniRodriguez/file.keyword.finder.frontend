@@ -33,7 +33,6 @@ const AppContextProvider = ({ children }: Props) => {
         "java",
         "pyton",
         "c++",
-        "figma",
       ],
     },
   ];

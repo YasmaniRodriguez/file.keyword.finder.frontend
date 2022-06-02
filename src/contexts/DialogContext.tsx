@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import { DialogContextType } from "../assets/types";
-import Dialog from "../components/Dialog/Dialog";
+import Dialog from "../widgets/Dialog/Dialog";
 import ItemViewer from "../components/ItemViewer/ItemViewer";
 
 interface Props {

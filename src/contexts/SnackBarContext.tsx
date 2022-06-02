@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import { SnackBarContextType } from "../assets/types";
-import SnackBar from "../components/SnackBar/SnackBar";
+import SnackBar from "../widgets/SnackBar/SnackBar";
 import { SnackbarOrigin } from "@mui/material/Snackbar";
 import { AlertColor } from "@mui/material";
 

@@ -44,10 +44,18 @@ interface Templates {
   keywords: string[];
 }
 
+interface Orders {
+  name: string;
+  files: number;
+  amount: number;
+  keywords: string[];
+}
+
 export type {
   Settings,
   AppContextType,
   DialogContextType,
   SnackBarContextType,
   Templates,
+  Orders,
 };
