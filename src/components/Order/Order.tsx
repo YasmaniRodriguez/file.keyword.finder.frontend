@@ -19,7 +19,7 @@ const Order = (props: Props) => {
 
   const [order, setOrder] = useState<Orders | undefined>(defaultOrder);
 
-  const addKeyword = (keyword: string) => {
+  const addOrderKeyword = (keyword: string) => {
     if (order !== undefined) {
       let arr: string[] | undefined = order.keywords;
       arr.push(keyword);
@@ -27,7 +27,7 @@ const Order = (props: Props) => {
     }
   };
 
-  const deleteKeyword = async (keyword: string) => {
+  const deleteOrderKeyword = async (keyword: string) => {
     if (order !== undefined) {
       let arr = order.keywords;
       let data = arr.find((row) => row === keyword);
@@ -41,17 +41,13 @@ const Order = (props: Props) => {
     }
   };
 
-  useEffect(() => {
-    console.log(order);
-  }, [order]);
-
   return (
     <StyledOrder>
       <Record record={appCtx?.order} files={1000} amount={10000} />
       <Keyword
-        keywords={order?.keywords}
-        addKeyword={addKeyword}
-        deleteKeyword={deleteKeyword}
+        orderKeywords={order?.keywords}
+        addOrderKeyword={addOrderKeyword}
+        deleteOrderKeyword={deleteOrderKeyword}
       />
     </StyledOrder>
   );

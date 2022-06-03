@@ -31,7 +31,7 @@ const MenuProps = {
 // }
 
 interface Props {
-  addKeyword: (arg0: string) => void;
+  addOrderKeyword: (arg0: string) => void;
 }
 
 const Template = (props: Props) => {
@@ -50,7 +50,7 @@ const Template = (props: Props) => {
     )?.keywords;
 
     tags?.forEach((element) => {
-      props.addKeyword(element);
+      props.addOrderKeyword(element);
     });
   };
 

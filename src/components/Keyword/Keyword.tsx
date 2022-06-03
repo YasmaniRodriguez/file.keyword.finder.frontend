@@ -1,31 +1,52 @@
-import React from "react";
+import React, { ChangeEvent, useState, useEffect, KeyboardEvent } from "react";
 import { Box, Typography, Button, TextField } from "@mui/material";
 import Template from "../Template/Template";
 import StyledKeyword from "./StyledKeyword";
 import Category from "../Category/Category";
 
 interface Props {
-  keywords: string[] | undefined;
-  addKeyword: (arg0: string) => void;
-  deleteKeyword: (arg0: string) => void;
+  orderKeywords: string[] | undefined;
+  addOrderKeyword: (arg0: string) => void;
+  deleteOrderKeyword: (arg0: string) => void;
 }
 
 const Keyword = (props: Props) => {
-  const { keywords, addKeyword, deleteKeyword } = props;
+  const { orderKeywords, addOrderKeyword, deleteOrderKeyword } = props;
+  const [keyword, setKeyword] = useState<string | undefined>();
+
+  const changeKeyword = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    let value = (event.currentTarget as HTMLInputElement).value;
+    setKeyword(value);
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" && keyword !== undefined) {
+      addOrderKeyword(keyword);
+    }
+    setKeyword("el caca");
+  };
+
   return (
     <StyledKeyword>
       <Typography className="order-title" variant="h5" component={"h5"}>
         Keywords
       </Typography>
       <Box className="order-content">
-        <Template addKeyword={addKeyword} />
+        <Template addOrderKeyword={addOrderKeyword} />
         <TextField
           id="keywords"
-          // value={props.keyword}
+          value={keyword}
+          onChange={(e) => changeKeyword(e)}
+          onKeyDown={(e) => handleKeyDown(e)}
           placeholder="Add keywords to find"
           fullWidth
         />
-        <Category keywords={keywords} deleteKeyword={deleteKeyword} />
+        <Category
+          orderKeywords={orderKeywords}
+          deleteOrderKeyword={deleteOrderKeyword}
+        />
         <Button
           sx={{ marginLeft: "50%", transform: "translateX(-50%)" }}
           variant="outlined"
