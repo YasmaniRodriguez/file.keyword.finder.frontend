@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, useEffect, KeyboardEvent } from "react";
+import React, { ChangeEvent, useState, KeyboardEvent } from "react";
 import { Box, Typography, Button, TextField } from "@mui/material";
 import Template from "../Template/Template";
 import StyledKeyword from "./StyledKeyword";
@@ -23,7 +23,10 @@ const Keyword = (props: Props) => {
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" && keyword !== undefined) {
-      addOrderKeyword(keyword);
+      console.log(keyword.length);
+      return keyword.length > 0
+        ? (addOrderKeyword(keyword), setKeyword(""))
+        : false;
     }
   };
 
@@ -49,7 +52,6 @@ const Keyword = (props: Props) => {
         <Button
           sx={{ marginLeft: "50%", transform: "translateX(-50%)" }}
           variant="outlined"
-          onClick={() => setKeyword(undefined)}
         >
           send to process
         </Button>
