@@ -25,7 +25,6 @@ const Keyword = (props: Props) => {
     if (event.key === "Enter" && keyword !== undefined) {
       addOrderKeyword(keyword);
     }
-    setKeyword("el caca");
   };
 
   return (
@@ -50,6 +49,7 @@ const Keyword = (props: Props) => {
         <Button
           sx={{ marginLeft: "50%", transform: "translateX(-50%)" }}
           variant="outlined"
+          onClick={() => setKeyword(undefined)}
         >
           send to process
         </Button>
