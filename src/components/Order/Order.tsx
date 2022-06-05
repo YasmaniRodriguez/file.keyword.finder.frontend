@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import StyledOrder from "./StyledOrder";
 import Record from "../Record/Record";
 import Keyword from "../Keyword/Keyword";
@@ -14,30 +14,31 @@ const Order = (props: Props) => {
     name: "9D7eHzOGSVd55iVNFeEBewkM5CA2",
     quantity: 1000,
     amount: 10000,
-    keywords: [],
+    keywords: new Set<string>(),
   };
 
   const [order, setOrder] = useState<Orders | undefined>(defaultOrder);
 
   const addOrderKeyword = (keyword: string) => {
     if (order !== undefined) {
-      let arr: string[] | undefined = order.keywords;
-      arr.push(keyword);
+      let arr: Set<string> | undefined = order.keywords;
+      arr.add(keyword);
       setOrder({ ...order, keywords: arr });
     }
   };
 
   const deleteOrderKeyword = async (keyword: string) => {
     if (order !== undefined) {
-      let arr = order.keywords;
-      let data = arr.find((row) => row === keyword);
-      if (data !== undefined) {
-        let i = arr.indexOf(data);
-        if (i !== -1) {
-          arr.splice(i, 1);
-          setOrder({ ...order, keywords: arr });
-        }
-      }
+      let arr: Set<string> | undefined = order.keywords;
+      arr.delete(keyword);
+      //let data = arr.find((row) => row === keyword);
+      // if (data !== undefined) {
+      //   let i = arr.indexOf(data);
+      //   if (i !== -1) {
+      //     arr.splice(i, 1);
+      //     setOrder({ ...order, keywords: arr });
+      //   }
+      // }
     }
   };
 

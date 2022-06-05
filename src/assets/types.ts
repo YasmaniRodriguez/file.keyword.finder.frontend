@@ -50,7 +50,7 @@ interface Orders {
   name: string;
   quantity: number;
   amount: number;
-  keywords: string[];
+  keywords: Set<string>;
 }
 
 export type {
