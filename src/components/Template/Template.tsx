@@ -16,7 +16,7 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 500,
+      width: 400,
     },
   },
 };
@@ -56,7 +56,7 @@ const Template = (props: Props) => {
 
   return (
     <StyledTemplate>
-      <FormControl fullWidth>
+      <FormControl>
         <Select
           displayEmpty
           value={template}

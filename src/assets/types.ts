@@ -43,6 +43,7 @@ interface SnackBarContextType {
 
 interface Templates {
   name: string;
+  category: string;
   keywords: string[];
 }
 

@@ -20,6 +20,7 @@ const AppContextProvider = ({ children }: Props) => {
   const defaultTemplates = [
     {
       name: "Web Full Stack",
+      category: "develop",
       keywords: [
         "nodejs",
         "reactjs",

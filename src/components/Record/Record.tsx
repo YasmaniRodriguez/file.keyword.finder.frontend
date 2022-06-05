@@ -42,11 +42,6 @@ const Record = (props: Props) => {
             </Typography>
           </Box>
         </Box>
-        <Box className="order-row">
-          <Typography variant="h6" component={"p"}>
-            Preview
-          </Typography>
-        </Box>
         <Cloud />
       </Box>
     </StyledRecord>

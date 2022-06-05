@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState, KeyboardEvent } from "react";
-import { Box, Typography, Button, TextField } from "@mui/material";
+import { Box, Typography, IconButton, Button, TextField } from "@mui/material";
+import { Settings as SettingsIcon } from "@mui/icons-material";
 import Template from "../Template/Template";
 import StyledKeyword from "./StyledKeyword";
 import Category from "../Category/Category";
@@ -35,7 +36,31 @@ const Keyword = (props: Props) => {
         Keywords
       </Typography>
       <Box className="order-content">
-        <Template addOrderKeyword={addOrderKeyword} />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "10px",
+            "& div": { width: "100%", margin: 0 },
+            "& button": {
+              width: "10%",
+              padding: "15px",
+              borderRadius: "5px",
+              marginLeft: "5px",
+              background: "rgb(210, 143, 230)",
+              color: "whitesmoke",
+            },
+            "& button:hover": {
+              bgcolor: "rgb(210, 143, 230)",
+            },
+          }}
+        >
+          <Template addOrderKeyword={addOrderKeyword} />
+          <Button disableElevation={true} aria-label="template-settings">
+            <SettingsIcon />
+          </Button>
+        </Box>
+
         <TextField
           id="keywords"
           value={keyword}

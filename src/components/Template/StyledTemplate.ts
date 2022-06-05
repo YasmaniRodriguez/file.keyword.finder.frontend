@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-const StyledTemplate = styled.div`
-  margin-bottom: 10px;
-`;
+const StyledTemplate = styled.div``;
 
 export default StyledTemplate;
