@@ -23,7 +23,7 @@ const Order = (props: Props) => {
     if (order !== undefined) {
       let arr: string[] | undefined = order.keywords;
       arr.push(keyword);
-      setOrder({ ...order, keywords: arr });
+      setOrder({ ...order, keywords: [...new Set(arr)] });
     }
   };
 
