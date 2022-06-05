@@ -1,6 +1,13 @@
-import React, { ChangeEvent, useState, KeyboardEvent } from "react";
-import { Box, Typography, IconButton, Button, TextField } from "@mui/material";
+import React, {
+  useContext,
+  ChangeEvent,
+  useState,
+  KeyboardEvent,
+  MouseEvent,
+} from "react";
+import { Box, Typography, Button, TextField } from "@mui/material";
 import { Settings as SettingsIcon } from "@mui/icons-material";
+import { DialogContext } from "../../contexts/DialogContext";
 import Template from "../Template/Template";
 import StyledKeyword from "./StyledKeyword";
 import Category from "../Category/Category";
@@ -12,6 +19,7 @@ interface Props {
 }
 
 const Keyword = (props: Props) => {
+  const dlgCtx = useContext(DialogContext);
   const { orderKeywords, addOrderKeyword, deleteOrderKeyword } = props;
   const [keyword, setKeyword] = useState<string | undefined>();
 
@@ -30,12 +38,35 @@ const Keyword = (props: Props) => {
     }
   };
 
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    let action = (event.currentTarget as HTMLButtonElement).ariaLabel;
+
+    switch (action) {
+      case "template-settings":
+        dlgCtx?.handleOpen();
+        break;
+
+      case "order-submit":
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <StyledKeyword>
       <Typography className="order-title" variant="h5" component={"h5"}>
         Keywords
       </Typography>
-      <Box className="order-content">
+      <Box
+        className="order-content"
+        sx={{
+          "& button:hover": {
+            bgcolor: "rgb(210, 143, 230)",
+          },
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -56,7 +87,11 @@ const Keyword = (props: Props) => {
           }}
         >
           <Template addOrderKeyword={addOrderKeyword} />
-          <Button disableElevation={true} aria-label="template-settings">
+          <Button
+            disableElevation={true}
+            aria-label="template-settings"
+            onClick={(e) => handleClick(e)}
+          >
             <SettingsIcon />
           </Button>
         </Box>
@@ -74,8 +109,15 @@ const Keyword = (props: Props) => {
           deleteOrderKeyword={deleteOrderKeyword}
         />
         <Button
-          sx={{ marginLeft: "50%", transform: "translateX(-50%)" }}
-          variant="outlined"
+          aria-label="order-submit"
+          size="large"
+          sx={{
+            background: "rgb(210, 143, 230)",
+            color: "white",
+            marginLeft: "50%",
+            fontWeight: "bold",
+            transform: "translateX(-50%)",
+          }}
         >
           send to process
         </Button>

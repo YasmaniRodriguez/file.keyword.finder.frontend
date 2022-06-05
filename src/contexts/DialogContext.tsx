@@ -43,7 +43,7 @@ const DialogContextProvider = ({ children }: Props) => {
         handleOpen,
         handleClose,
         handleConfirm,
-        labelPrimaryButton: "Apply changes",
+        labelPrimaryButton: "Ok",
         labelSecondaryButton: "Cancel",
         handleView,
       }}

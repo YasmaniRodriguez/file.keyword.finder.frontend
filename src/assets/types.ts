@@ -43,8 +43,8 @@ interface SnackBarContextType {
 
 interface Templates {
   name: string;
-  category: string;
-  keywords: string[];
+  parent?: string;
+  keywords?: string[];
 }
 
 interface Orders {
