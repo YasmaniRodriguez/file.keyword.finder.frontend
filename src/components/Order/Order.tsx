@@ -39,7 +39,6 @@ const Order = (props: Props) => {
   const deleteOrderKeyword = async (keyword: string) => {
     if (order !== undefined) {
       let arr: string[] | undefined = order.keywords;
-
       let data = arr.find((row) => row === keyword);
       if (data !== undefined) {
         let i = arr.indexOf(data);
