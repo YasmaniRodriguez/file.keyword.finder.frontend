@@ -23,7 +23,6 @@ const Keyword = (props: Props) => {
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" && keyword !== undefined) {
-      console.log(keyword.length);
       return keyword.length > 0
         ? (addOrderKeyword(keyword), setKeyword(""))
         : false;
