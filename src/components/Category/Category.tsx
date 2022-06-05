@@ -8,19 +8,17 @@ import {
 } from "./StyledCategory";
 
 interface Props {
-  orderKeywords: Set<string> | undefined;
+  orderKeywords: string[] | undefined;
   deleteOrderKeyword: (arg0: string) => void;
 }
 
 const Category = (props: Props) => {
   const { orderKeywords, deleteOrderKeyword } = props;
 
-  const keywords = orderKeywords ? [...orderKeywords] : [];
-
   return (
     <StyledCategory>
       <CategoryList>
-        {keywords?.map((word, key) => (
+        {orderKeywords?.map((word, key) => (
           <CategoryListItem key={key} index={key}>
             {word}
             <IconButton

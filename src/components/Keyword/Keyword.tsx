@@ -5,7 +5,7 @@ import StyledKeyword from "./StyledKeyword";
 import Category from "../Category/Category";
 
 interface Props {
-  orderKeywords: Set<string> | undefined;
+  orderKeywords: string[] | undefined;
   addOrderKeyword: (arg0: string) => void;
   deleteOrderKeyword: (arg0: string) => void;
 }
