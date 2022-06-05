@@ -1,18 +1,41 @@
 import React, { useContext } from "react";
 import StyledDialog from "./StyledDialog";
-import { DialogTitle, DialogContent } from "@mui/material";
+import {
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+} from "@mui/material";
 import { DialogContext } from "../../contexts/DialogContext";
 
-const Dialog = () => {
-  const dialogCtx = useContext(DialogContext);
+interface Props {}
+
+const Dialog = (props: Props) => {
+  const dlgCtx = useContext(DialogContext);
+
   return (
     <StyledDialog
-      open={dialogCtx?.open || false}
-      onClose={dialogCtx?.handleClose}
-      maxWidth={"md"}
+      open={dlgCtx?.open || false}
+      onClose={(event, reason) => {
+        return reason !== "backdropClick" && "escapeKeyDown";
+      }}
+      maxWidth={"lg"}
     >
-      <DialogTitle>{dialogCtx?.title}</DialogTitle>
-      <DialogContent>{dialogCtx?.child}</DialogContent>
+      <DialogTitle>{dlgCtx?.title}</DialogTitle>
+      <DialogContent>{dlgCtx?.content}</DialogContent>
+      <DialogActions>
+        <Button onClick={dlgCtx?.handleClose} variant="outlined">
+          {dlgCtx?.labelSecondaryButton}
+        </Button>
+        <Button
+          onClick={dlgCtx?.handleConfirm}
+          variant="contained"
+          color="success"
+          autoFocus
+        >
+          {dlgCtx?.labelPrimaryButton}
+        </Button>
+      </DialogActions>
     </StyledDialog>
   );
 };

@@ -1,26 +1,17 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { DialogContextType } from "../assets/types";
 import Dialog from "../widgets/Dialog/Dialog";
-import ItemViewer from "../components/ItemViewer/ItemViewer";
 
 interface Props {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }
 
 const DialogContext = createContext<DialogContextType | null>(null);
 
 const DialogContextProvider = ({ children }: Props) => {
   const [open, setOpen] = useState(false);
-
-  const defaultChild = (
-    <ItemViewer styles={{}}>
-      <></>
-    </ItemViewer>
-  );
-
-  const [title, setTitle] = useState("");
-
-  const [child, setChild] = useState(defaultChild);
+  const [title, setTitle] = useState<string | undefined>();
+  const [content, setContent] = useState<JSX.Element | undefined>();
 
   const handleOpen = () => {
     setOpen(true);
@@ -28,37 +19,33 @@ const DialogContextProvider = ({ children }: Props) => {
 
   const handleClose = () => {
     setOpen(false);
+    setTitle(undefined);
+    setContent(undefined);
   };
 
-  const changeTitle = (newTitle: string) => {
+  const handleConfirm = () => {
+    setOpen(false);
+  };
+
+  const handleView = (newTitle: string, newContent: JSX.Element) => {
     setTitle(newTitle);
+    setContent(newContent);
   };
 
-  // const changeChild = (newChild?: {}[]) => {
-  //   return newChild?.length === 0
-  //     ? false
-  //     : setChild(
-  //         <ItemViewer styles={cardUseCaseBoxStyles}>
-  //           <SearchWidget fullWidth={false} styles={{}} />
-  //           <Box component={"article"}>
-  //             {newChild?.map((useCase, i) => (
-  //               <UseCaseWidget key={i} {...useCase} />
-  //             ))}
-  //           </Box>
-  //         </ItemViewer>,
-  //       );
-  // };
+  useEffect(() => {}, [open]);
 
   return (
     <DialogContext.Provider
       value={{
         open,
         title,
-        child,
+        content,
         handleOpen,
         handleClose,
-        changeTitle,
-        // changeChild,
+        handleConfirm,
+        labelPrimaryButton: "Apply changes",
+        labelSecondaryButton: "Cancel",
+        handleView,
       }}
     >
       <Dialog />

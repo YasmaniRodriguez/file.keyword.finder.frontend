@@ -19,12 +19,14 @@ interface AppContextType {
 
 interface DialogContextType {
   open: boolean;
-  title: string;
-  child: JSX.Element | JSX.Element[];
+  title: string | undefined;
+  content: JSX.Element | undefined;
   handleOpen: () => void;
   handleClose: () => void;
-  changeTitle: (arg0: string) => void;
-  //changeChild: (arg0: {}[]) => void;
+  handleConfirm: () => void;
+  handleView: (arg0: string, arg1: JSX.Element) => void;
+  labelPrimaryButton: string;
+  labelSecondaryButton: string;
 }
 
 interface SnackBarContextType {
