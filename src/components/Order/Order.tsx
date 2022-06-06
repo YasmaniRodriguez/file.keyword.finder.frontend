@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import StyledOrder from "./StyledOrder";
 import Record from "../Record/Record";
-import Keyword from "../Keyword/Keyword";
+import Search from "../Search/Search";
 import Template from "../Template/Template";
 import { DialogContext } from "../../contexts/DialogContext";
 import { SnackBarContext } from "../../contexts/SnackBarContext";
@@ -62,7 +62,7 @@ const Order = (props: Props) => {
   return (
     <StyledOrder>
       <Record />
-      <Keyword
+      <Search
         keyword={keyword}
         changeKeyword={changeKeyword}
         handleKeyDown={handleKeyDown}
