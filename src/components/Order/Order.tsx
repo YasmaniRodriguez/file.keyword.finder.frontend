@@ -8,6 +8,7 @@ import React, {
 import StyledOrder from "./StyledOrder";
 import Record from "../Record/Record";
 import Keyword from "../Keyword/Keyword";
+import Template from "../Template/Template";
 import { DialogContext } from "../../contexts/DialogContext";
 import { SnackBarContext } from "../../contexts/SnackBarContext";
 import { AppContext } from "../../contexts/AppContext";
@@ -46,6 +47,7 @@ const Order = (props: Props) => {
 
     switch (action) {
       case "template-settings":
+        dlgCtx?.handleView("My templates", <Template />);
         dlgCtx?.handleOpen();
         break;
 

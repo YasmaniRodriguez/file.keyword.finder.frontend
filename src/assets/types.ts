@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
 import { SnackbarOrigin } from "@mui/material/Snackbar";
 import { AlertColor } from "@mui/material";
 
@@ -10,12 +9,15 @@ interface Settings {
 
 interface AppContextType {
   settings: Settings;
-  setSettings: Dispatch<SetStateAction<Settings>>;
   order: Orders | undefined;
   addOrderKeyword: (arg0: string) => void;
   deleteOrderKeyword: (arg0: string) => void;
+  availableCategories: string[];
+  addCategory: (arg0: string) => void;
+  deleteCategory: (arg0: string) => void;
   availableTemplates: Templates[] | undefined;
-  setAvailableTemplates: Dispatch<SetStateAction<Templates[] | undefined>>;
+  addTemplate: (arg0: Templates) => void;
+  deleteTemplate: (arg0: Templates) => void;
 }
 
 interface DialogContextType {
