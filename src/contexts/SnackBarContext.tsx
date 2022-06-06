@@ -25,6 +25,7 @@ const SnackBarContextProvider = ({ children }: Props) => {
 
   const handleClose = () => {
     setOpen(false);
+    setMessage("");
   };
 
   const changeMessage = (newMessage: string) => {

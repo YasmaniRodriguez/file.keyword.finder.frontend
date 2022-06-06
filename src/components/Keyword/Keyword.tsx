@@ -8,6 +8,7 @@ import React, {
 import { Box, Typography, Button, TextField } from "@mui/material";
 import { Settings as SettingsIcon } from "@mui/icons-material";
 import { DialogContext } from "../../contexts/DialogContext";
+import { SnackBarContext } from "../../contexts/SnackBarContext";
 import { AppContext } from "../../contexts/AppContext";
 import SelectWidget from "../../widgets/SelectWidget/SelectWidget";
 import StyledKeyword from "./StyledKeyword";
@@ -18,6 +19,7 @@ interface Props {}
 const Keyword = (props: Props) => {
   const dlgCtx = useContext(DialogContext);
   const appCtx = useContext(AppContext);
+  const snbCtx = useContext(SnackBarContext);
 
   const [keyword, setKeyword] = useState<string | undefined>();
 
@@ -30,6 +32,11 @@ const Keyword = (props: Props) => {
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" && keyword !== undefined) {
+      let exists = appCtx?.order?.keywords.includes(keyword);
+      if (exists) {
+        snbCtx?.changeMessage(`keyword ${keyword} already exist in the list`);
+        snbCtx?.handleOpen();
+      }
       return keyword.length > 0
         ? (appCtx?.addOrderKeyword(keyword), setKeyword(""))
         : false;
