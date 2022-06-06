@@ -22,7 +22,7 @@ const StyledRecord = styled(Box)`
       }
     }
     & p:nth-child(2) {
-      width: 100%;
+      width: 50%;
       margin-left: 5px;
     }
   }

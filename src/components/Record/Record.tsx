@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Divider } from "@mui/material";
 import StyledRecord from "./StyledRecord";
 import Cloud from "../Cloud/Cloud";
 
@@ -18,7 +18,7 @@ const Record = (props: Props) => {
       <Box className="order-content">
         <Box className="order-row">
           <Typography variant="h6" component={"p"}>
-            Id
+            Order_Id
           </Typography>
           <Typography variant="h6" component={"p"}>
             {props.record}
@@ -42,6 +42,7 @@ const Record = (props: Props) => {
             </Typography>
           </Box>
         </Box>
+        <Divider sx={{ borderColor: "rgb(210, 143, 230)" }} />
         <Cloud />
       </Box>
     </StyledRecord>
