@@ -1,10 +1,12 @@
 import React from "react";
-import { Box, Typography, Button, IconButton } from "@mui/material";
+import { Paper, Box, Typography, Button, IconButton } from "@mui/material";
 
 interface Props {}
 
 const Form = (props: Props) => {
-  return <Box></Box>;
+  return (
+    <Paper sx={{ width: "100%", height: "100%", background: "blue" }}></Paper>
+  );
 };
 
 export default Form;

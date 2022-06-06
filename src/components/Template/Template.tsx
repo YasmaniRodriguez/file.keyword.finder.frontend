@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState, useContext, useRef } from "react";
 import { Box, Typography, Button, IconButton } from "@mui/material";
 import StyledCopywriting from "./StyledTemplate";
+import Form from "./Form";
+import Board from "./Board";
 
 interface Props {}
 
 const Template = (props: Props) => {
+  const [openForm, setOpenForm] = useState(false);
   return (
     <StyledCopywriting>
       <Box sx={{ border: "solid 1px black", height: "10%" }}></Box>
       <Box sx={{ display: "flex", height: "90%" }}>
         <Box sx={{ border: "solid 1px black", width: "50%" }}></Box>
-        <Box sx={{ border: "solid 1px black", width: "50%" }}></Box>
+        <Box sx={{ border: "solid 1px black", width: "50%" }}>
+          {openForm ? <Form /> : <Board />}
+        </Box>
       </Box>
     </StyledCopywriting>
   );
