@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import StyledTemplate from "./StyledTemplate";
+import StyledSelectWidget from "./StyledSelectWidget";
 import {
   OutlinedInput,
   MenuItem,
@@ -30,11 +30,9 @@ const MenuProps = {
 //   };
 // }
 
-interface Props {
-  addOrderKeyword: (arg0: string) => void;
-}
+interface Props {}
 
-const Template = (props: Props) => {
+const SelectWidget = (props: Props) => {
   const appCtx = useContext(AppContext);
   //const theme = useTheme();
   const [template, setTemplate] = useState<string[]>([]);
@@ -50,12 +48,12 @@ const Template = (props: Props) => {
     )?.keywords;
 
     tags?.forEach((element) => {
-      props.addOrderKeyword(element);
+      appCtx?.addOrderKeyword(element);
     });
   };
 
   return (
-    <StyledTemplate>
+    <StyledSelectWidget>
       <FormControl>
         <Select
           displayEmpty
@@ -83,8 +81,8 @@ const Template = (props: Props) => {
           ))}
         </Select>
       </FormControl>
-    </StyledTemplate>
+    </StyledSelectWidget>
   );
 };
 
-export default Template;
+export default SelectWidget;

@@ -1,29 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IconButton } from "@mui/material";
 import { Clear as ClearIcon } from "@mui/icons-material";
+import { AppContext } from "../../contexts/AppContext";
 import {
   StyledCategory,
   CategoryList,
   CategoryListItem,
 } from "./StyledCategory";
 
-interface Props {
-  orderKeywords: string[] | undefined;
-  deleteOrderKeyword: (arg0: string) => void;
-}
+interface Props {}
 
 const Category = (props: Props) => {
-  const { orderKeywords, deleteOrderKeyword } = props;
+  const appCtx = useContext(AppContext);
 
   return (
     <StyledCategory>
       <CategoryList>
-        {orderKeywords?.map((word, key) => (
+        {appCtx?.order?.keywords.map((word, key) => (
           <CategoryListItem key={key} index={key}>
             {word}
             <IconButton
               onClick={() => {
-                deleteOrderKeyword(word);
+                appCtx.deleteOrderKeyword(word);
               }}
               size="small"
             >

@@ -11,8 +11,9 @@ interface Settings {
 interface AppContextType {
   settings: Settings;
   setSettings: Dispatch<SetStateAction<Settings>>;
-  order: string | undefined;
-  setOrder: Dispatch<SetStateAction<string | undefined>>;
+  order: Orders | undefined;
+  addOrderKeyword: (arg0: string) => void;
+  deleteOrderKeyword: (arg0: string) => void;
   availableTemplates: Templates[] | undefined;
   setAvailableTemplates: Dispatch<SetStateAction<Templates[] | undefined>>;
 }
@@ -43,7 +44,7 @@ interface SnackBarContextType {
 
 interface Templates {
   name: string;
-  parent?: string;
+  category?: string;
   keywords?: string[];
 }
 

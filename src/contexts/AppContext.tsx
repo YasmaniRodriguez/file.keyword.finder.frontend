@@ -1,5 +1,5 @@
 import React, { createContext, useState, ReactNode } from "react";
-import { Settings, AppContextType } from "../assets/types";
+import { Settings, AppContextType, Orders } from "../assets/types";
 import { Templates } from "../assets/types";
 
 interface Props {
@@ -15,15 +15,10 @@ const AppContextProvider = ({ children }: Props) => {
     theme: "light",
   });
 
-  const defaultOrder = "9D7eHzOGSVd55iVNFeEBewkM5CA2";
-
   const defaultTemplates = [
     {
-      name: "Develop",
-    },
-    {
       name: "Web Full Stack",
-      parent: "Development",
+      category: "Development",
       keywords: [
         "nodejs",
         "reactjs",
@@ -41,7 +36,46 @@ const AppContextProvider = ({ children }: Props) => {
     },
   ];
 
-  const [order, setOrder] = useState<string | undefined>(defaultOrder);
+  const defaultOrder = {
+    name: "9D7eHzOGSVd55iVNFeEBewkM5CA2",
+    quantity: 1000,
+    amount: 10000,
+    keywords: [],
+  };
+
+  const [order, setOrder] = useState<Orders | undefined>(defaultOrder);
+
+  const addOrderKeyword = (keyword: string) => {
+    if (order !== undefined) {
+      let arr: string[] | undefined = order.keywords;
+      arr.push(keyword);
+      setOrder({
+        ...order,
+        keywords: [
+          ...new Set(
+            arr.map((word) => {
+              return word.toLowerCase();
+            }),
+          ),
+        ],
+      });
+    }
+  };
+
+  const deleteOrderKeyword = async (keyword: string) => {
+    if (order !== undefined) {
+      let arr: string[] | undefined = order.keywords;
+      let data = arr.find((row) => row === keyword);
+      if (data !== undefined) {
+        let i = arr.indexOf(data);
+        if (i !== -1) {
+          arr.splice(i, 1);
+          setOrder({ ...order, keywords: arr });
+        }
+      }
+    }
+  };
+
   const [availableTemplates, setAvailableTemplates] = useState<
     Templates[] | undefined
   >(defaultTemplates);
@@ -52,7 +86,8 @@ const AppContextProvider = ({ children }: Props) => {
         settings,
         setSettings,
         order,
-        setOrder,
+        addOrderKeyword,
+        deleteOrderKeyword,
         availableTemplates,
         setAvailableTemplates,
       }}

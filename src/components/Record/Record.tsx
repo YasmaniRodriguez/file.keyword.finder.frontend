@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Typography, Divider } from "@mui/material";
 import StyledRecord from "./StyledRecord";
 import Cloud from "../Cloud/Cloud";
+import { AppContext } from "../../contexts/AppContext";
 
-interface Props {
-  record?: string;
-  files: number;
-  amount: number;
-}
+interface Props {}
 
 const Record = (props: Props) => {
+  const appCtx = useContext(AppContext);
   return (
     <StyledRecord>
       <Typography className="order-title" variant="h5" component={"h5"}>
@@ -21,7 +19,7 @@ const Record = (props: Props) => {
             Order_Id
           </Typography>
           <Typography variant="h6" component={"p"}>
-            {props.record}
+            {appCtx?.order?.name}
           </Typography>
         </Box>
         <Box sx={{ display: "flex" }}>
@@ -30,7 +28,7 @@ const Record = (props: Props) => {
               Files
             </Typography>
             <Typography variant="h6" component={"p"}>
-              {props.files}
+              {appCtx?.order?.quantity}
             </Typography>
           </Box>
           <Box sx={{ flexGrow: 1 }} className="order-row">
@@ -38,7 +36,7 @@ const Record = (props: Props) => {
               Amount
             </Typography>
             <Typography variant="h6" component={"p"}>
-              {props.amount}
+              {appCtx?.order?.amount}
             </Typography>
           </Box>
         </Box>

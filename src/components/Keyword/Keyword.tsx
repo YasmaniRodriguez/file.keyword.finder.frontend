@@ -8,19 +8,17 @@ import React, {
 import { Box, Typography, Button, TextField } from "@mui/material";
 import { Settings as SettingsIcon } from "@mui/icons-material";
 import { DialogContext } from "../../contexts/DialogContext";
-import Template from "../Template/Template";
+import { AppContext } from "../../contexts/AppContext";
+import SelectWidget from "../../widgets/SelectWidget/SelectWidget";
 import StyledKeyword from "./StyledKeyword";
 import Category from "../Category/Category";
 
-interface Props {
-  orderKeywords: string[] | undefined;
-  addOrderKeyword: (arg0: string) => void;
-  deleteOrderKeyword: (arg0: string) => void;
-}
+interface Props {}
 
 const Keyword = (props: Props) => {
   const dlgCtx = useContext(DialogContext);
-  const { orderKeywords, addOrderKeyword, deleteOrderKeyword } = props;
+  const appCtx = useContext(AppContext);
+
   const [keyword, setKeyword] = useState<string | undefined>();
 
   const changeKeyword = (
@@ -33,7 +31,7 @@ const Keyword = (props: Props) => {
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" && keyword !== undefined) {
       return keyword.length > 0
-        ? (addOrderKeyword(keyword), setKeyword(""))
+        ? (appCtx?.addOrderKeyword(keyword), setKeyword(""))
         : false;
     }
   };
@@ -86,7 +84,7 @@ const Keyword = (props: Props) => {
             },
           }}
         >
-          <Template addOrderKeyword={addOrderKeyword} />
+          <SelectWidget />
           <Button
             disableElevation={true}
             aria-label="template-settings"
@@ -104,10 +102,7 @@ const Keyword = (props: Props) => {
           placeholder="Add keywords to find"
           fullWidth
         />
-        <Category
-          orderKeywords={orderKeywords}
-          deleteOrderKeyword={deleteOrderKeyword}
-        />
+        <Category />
         <Button
           aria-label="order-submit"
           size="large"
