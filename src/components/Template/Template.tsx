@@ -7,14 +7,14 @@ import Board from "./Board";
 interface Props {}
 
 const Template = (props: Props) => {
-  const [openForm, setOpenForm] = useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <StyledCopywriting>
       <Box sx={{ border: "solid 1px black", height: "10%" }}></Box>
       <Box sx={{ display: "flex", height: "90%" }}>
         <Box sx={{ border: "solid 1px black", width: "50%" }}></Box>
         <Box sx={{ border: "solid 1px black", width: "50%" }}>
-          {openForm ? <Form /> : <Board />}
+          {open ? <Form open={open} /> : <Board />}
         </Box>
       </Box>
     </StyledCopywriting>
