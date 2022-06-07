@@ -24,17 +24,30 @@ const Dialog = (props: Props) => {
       <DialogTitle>{dlgCtx?.title}</DialogTitle>
       <DialogContent>{dlgCtx?.content}</DialogContent>
       <DialogActions>
-        <Button onClick={dlgCtx?.handleClose} variant="outlined">
-          {dlgCtx?.labelSecondaryButton}
-        </Button>
-        <Button
-          onClick={dlgCtx?.handleConfirm}
-          variant="contained"
-          color="success"
-          autoFocus
-        >
-          {dlgCtx?.labelPrimaryButton}
-        </Button>
+        {dlgCtx?.labelSecondaryButton ? (
+          <>
+            <Button onClick={dlgCtx?.handleClose} variant="outlined">
+              {dlgCtx?.labelSecondaryButton}
+            </Button>
+            <Button
+              onClick={dlgCtx?.handleConfirm}
+              variant="contained"
+              color="success"
+              autoFocus
+            >
+              {dlgCtx?.labelPrimaryButton}
+            </Button>
+          </>
+        ) : (
+          <Button
+            onClick={dlgCtx?.handleConfirm}
+            variant="contained"
+            color="success"
+            autoFocus
+          >
+            {dlgCtx?.labelPrimaryButton}
+          </Button>
+        )}
       </DialogActions>
     </StyledDialog>
   );

@@ -8,7 +8,7 @@ interface Props {
 
 const Form = (props: Props) => {
   return (
-    <Fade in={props.open}>
+    <Fade in={props.open} timeout={2000}>
       <Box sx={{ width: "100%", height: "100%", background: "blue" }}></Box>
     </Fade>
   );

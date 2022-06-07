@@ -7,7 +7,7 @@ import Board from "./Board";
 interface Props {}
 
 const Template = (props: Props) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   return (
     <StyledCopywriting>
       <Box sx={{ border: "solid 1px black", height: "10%" }}></Box>

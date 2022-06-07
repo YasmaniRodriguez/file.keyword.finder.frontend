@@ -27,9 +27,14 @@ interface DialogContextType {
   handleOpen: () => void;
   handleClose: () => void;
   handleConfirm: () => void;
-  handleView: (arg0: string, arg1: JSX.Element) => void;
-  labelPrimaryButton: string;
-  labelSecondaryButton: string;
+  handleView: (
+    arg0: string,
+    arg1: JSX.Element,
+    arg2: string,
+    arg3?: string,
+  ) => void;
+  labelPrimaryButton: string | undefined;
+  labelSecondaryButton: string | undefined;
 }
 
 interface SnackBarContextType {

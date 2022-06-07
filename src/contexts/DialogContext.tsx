@@ -12,6 +12,12 @@ const DialogContextProvider = ({ children }: Props) => {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState<string | undefined>();
   const [content, setContent] = useState<JSX.Element | undefined>();
+  const [labelPrimaryButton, setLabelPrimaryButton] = useState<
+    string | undefined
+  >("Ok");
+  const [labelSecondaryButton, setLabelSecondaryButton] = useState<
+    string | undefined
+  >();
 
   const handleOpen = () => {
     setOpen(true);
@@ -43,8 +49,8 @@ const DialogContextProvider = ({ children }: Props) => {
         handleOpen,
         handleClose,
         handleConfirm,
-        labelPrimaryButton: "Ok",
-        labelSecondaryButton: "Cancel",
+        labelPrimaryButton,
+        labelSecondaryButton,
         handleView,
       }}
     >
