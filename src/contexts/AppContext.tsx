@@ -18,6 +18,7 @@ const AppContextProvider = ({ children }: Props) => {
   const defaultTemplates = [
     {
       name: "Web Full Stack",
+      category: "Development",
       keywords: [
         "nodejs",
         "reactjs",
@@ -31,6 +32,18 @@ const AppContextProvider = ({ children }: Props) => {
         "java",
         "pyton",
         "c++",
+      ],
+    },
+    {
+      name: "Comprador",
+      keywords: [
+        "compras",
+        "abastecimiento",
+        "proveedores",
+        "depositos",
+        "fletes",
+        "acuerdo de precios",
+        "materias primas",
       ],
     },
   ];

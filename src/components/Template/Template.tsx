@@ -11,7 +11,6 @@ interface Props {}
 
 const Template = (props: Props) => {
   const appCtx = useContext(AppContext);
-  console.log(appCtx?.availableCategories);
   const [open, setOpen] = useState(true);
   return (
     <StyledCopywriting>
@@ -53,9 +52,19 @@ const Template = (props: Props) => {
         >
           {appCtx?.availableCategories?.map((category, key) => (
             <Category name={category} key={key}>
-              {appCtx?.availableTemplates?.map((template, key) => (
-                <Card key={key}>{template.name}</Card>
-              ))}
+              {category.toLowerCase() !== "generic"
+                ? appCtx?.availableTemplates
+                    ?.filter((obj) => obj.category === category)
+                    .map((template, key) => (
+                      <Card key={key}>{template.name}</Card>
+                    ))
+                : appCtx?.availableTemplates?.map((template, key) =>
+                    template.category === undefined ? (
+                      <Card key={key}>{template.name}</Card>
+                    ) : (
+                      <></>
+                    ),
+                  )}
             </Category>
           ))}
         </Box>
