@@ -49,7 +49,7 @@ const OrderWrapper = (props: Props) => {
 
     switch (action) {
       case "template-settings":
-        dlgCtx?.handleView("My templates", <Template />);
+        dlgCtx?.handleView("Templates", <Template />, "Ok");
         dlgCtx?.handleOpen();
         break;
 

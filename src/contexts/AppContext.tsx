@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode } from "react";
+import React, { createContext, useState, ReactNode, useEffect } from "react";
 import { Settings, AppContextType, Orders } from "../assets/types";
 import { Templates } from "../assets/types";
 
@@ -15,12 +15,9 @@ const AppContextProvider = ({ children }: Props) => {
     theme: "light",
   };
 
-  const defaultCategories = ["Development"];
-
   const defaultTemplates = [
     {
       name: "Web Full Stack",
-      category: "Development",
       keywords: [
         "nodejs",
         "reactjs",
@@ -48,8 +45,9 @@ const AppContextProvider = ({ children }: Props) => {
   const [settings, setSettings] = useState<Settings>(defaultSettings);
 
   const [order, setOrder] = useState<Orders | undefined>(defaultOrder);
-  const [availableCategories, setAvailableCategories] =
-    useState<string[]>(defaultCategories);
+  const [availableCategories, setAvailableCategories] = useState<string[]>([
+    "Generic",
+  ]);
   const [availableTemplates, setAvailableTemplates] =
     useState<Templates[]>(defaultTemplates);
 
@@ -125,6 +123,10 @@ const AppContextProvider = ({ children }: Props) => {
       }
     }
   };
+
+  useEffect(() => {
+    console.log(availableCategories);
+  }, [availableCategories]);
 
   return (
     <AppContext.Provider
