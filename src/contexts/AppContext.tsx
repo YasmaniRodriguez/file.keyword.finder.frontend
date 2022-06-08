@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode, useEffect } from "react";
+import React, { createContext, useState, ReactNode } from "react";
 import { Settings, AppContextType, Orders } from "../assets/types";
 import { Templates } from "../assets/types";
 
@@ -47,6 +47,7 @@ const AppContextProvider = ({ children }: Props) => {
   const [order, setOrder] = useState<Orders | undefined>(defaultOrder);
   const [availableCategories, setAvailableCategories] = useState<string[]>([
     "Generic",
+    "Development",
   ]);
   const [availableTemplates, setAvailableTemplates] =
     useState<Templates[]>(defaultTemplates);
@@ -123,10 +124,6 @@ const AppContextProvider = ({ children }: Props) => {
       }
     }
   };
-
-  useEffect(() => {
-    console.log(availableCategories);
-  }, [availableCategories]);
 
   return (
     <AppContext.Provider

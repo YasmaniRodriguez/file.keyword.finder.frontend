@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Box, Typography, Button, IconButton } from "@mui/material";
+import { Box, Typography, Button, IconButton, Card } from "@mui/material";
 import { AppContext } from "../../contexts/AppContext";
 import StyledCopywriting from "./StyledTemplate";
 import { theme } from "../../assets/themes";
@@ -11,7 +11,7 @@ interface Props {}
 
 const Template = (props: Props) => {
   const appCtx = useContext(AppContext);
-  console.log(appCtx?.availableTemplates);
+  console.log(appCtx?.availableCategories);
   const [open, setOpen] = useState(true);
   return (
     <StyledCopywriting>
@@ -51,26 +51,13 @@ const Template = (props: Props) => {
             },
           }}
         >
-          <Category name="generic">
-            <Box></Box>
-            <Box></Box>
-            <Box></Box>
-          </Category>
-          <Category name="development">
-            <Box></Box>
-            <Box></Box>
-            <Box></Box>
-          </Category>
-          <Category name="administrative">
-            <Box></Box>
-            <Box></Box>
-            <Box></Box>
-          </Category>
-          {/* {appCtx?.availableCategories?.map((category, key) => (
+          {appCtx?.availableCategories?.map((category, key) => (
             <Category name={category} key={key}>
-              <Box sx={{ background: "red" }}></Box>
+              {appCtx?.availableTemplates?.map((template, key) => (
+                <Card key={key}>{template.name}</Card>
+              ))}
             </Category>
-          ))} */}
+          ))}
         </Box>
         <Box sx={{ border: "solid 1px black", width: "50%" }}>
           {open ? <Form open={open} /> : <Board />}

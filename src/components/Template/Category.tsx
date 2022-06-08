@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { Box, Typography } from "@mui/material";
+import { theme } from "../../assets/themes";
 
 interface Props {
   name: string;
@@ -7,14 +8,17 @@ interface Props {
 }
 
 const Category = (props: Props) => {
-  console.log(props.name);
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", padding: "5px" }}>
       <Typography
         sx={{
           padding: "1vh 5px",
-          background: "green",
+          background: theme.colors.tertiary,
           verticalAlign: "center",
+          borderRadius: "5px",
+          textTransform: "capitalize",
+          fontWeight: "bold",
+          color: theme.colors.pentarius,
         }}
       >
         {props.name}
@@ -22,7 +26,8 @@ const Category = (props: Props) => {
       <Box
         sx={{
           width: "100%",
-          "& div": { height: "6vh", margin: "5px", border: "solid 1px red" },
+          cursor: "pointer",
+          "& .MuiPaper-root": { height: "6vh", margin: "5px" },
         }}
       >
         {props.children}

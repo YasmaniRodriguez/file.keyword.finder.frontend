@@ -20,8 +20,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <SnackBarContextProvider>
-        <DialogContextProvider>
-          <AppContextProvider>
+        <AppContextProvider>
+          <DialogContextProvider>
             <BrowserRouter>
               <Header />
               <Main>
@@ -31,8 +31,8 @@ function App() {
               </Main>
               <Footer />
             </BrowserRouter>
-          </AppContextProvider>
-        </DialogContextProvider>
+          </DialogContextProvider>
+        </AppContextProvider>
       </SnackBarContextProvider>
     </ThemeProvider>
   );
