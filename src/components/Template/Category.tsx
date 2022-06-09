@@ -9,15 +9,13 @@ interface Props {
 
 const Category = (props: Props) => {
   return (
-    <Box sx={{ width: "100%", padding: "5px" }}>
+    <Box sx={{ width: "100%" }}>
       <Typography
         sx={{
           padding: "1vh 5px",
           background: theme.colors.tertiary,
           verticalAlign: "center",
-          borderRadius: "5px",
           textTransform: "capitalize",
-          fontWeight: "bold",
           color: theme.colors.pentarius,
         }}
       >

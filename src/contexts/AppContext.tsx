@@ -46,6 +46,18 @@ const AppContextProvider = ({ children }: Props) => {
         "materias primas",
       ],
     },
+    {
+      name: "Vendedor",
+      keywords: [
+        "compras",
+        "abastecimiento",
+        "proveedores",
+        "depositos",
+        "fletes",
+        "acuerdo de precios",
+        "materias primas",
+      ],
+    },
   ];
 
   const defaultOrder = {

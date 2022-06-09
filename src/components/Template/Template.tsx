@@ -6,6 +6,7 @@ import { theme } from "../../assets/themes";
 import Form from "./Form";
 import Board from "./Board";
 import Category from "./Category";
+import ListWidget from "../../widgets/ListWidget/ListWidget";
 
 interface Props {}
 
@@ -16,22 +17,18 @@ const Template = (props: Props) => {
     <StyledCopywriting>
       <Box
         sx={{
-          border: `solid 1px ${theme.colors.secondary}`,
-          height: "10%",
-          marginBottom: "5px",
-        }}
-      ></Box>
-      <Box
-        sx={{
           display: "flex",
-          height: "90%",
+          flexWrap: "wrap",
+          height: "100%",
           padding: "5px",
           border: `solid 1px ${theme.colors.secondary}`,
         }}
       >
         <Box
           sx={{
-            width: "50%",
+            border: `solid 1px ${theme.colors.secondary}`,
+            flexGrow: 1,
+            flex: "350px",
             overflow: "hidden scroll",
 
             "&::-webkit-scrollbar": {
@@ -52,23 +49,29 @@ const Template = (props: Props) => {
         >
           {appCtx?.availableCategories?.map((category, key) => (
             <Category name={category} key={key}>
-              {category.toLowerCase() !== "generic"
-                ? appCtx?.availableTemplates
-                    ?.filter((obj) => obj.category === category)
-                    .map((template, key) => (
-                      <Card key={key}>{template.name}</Card>
-                    ))
-                : appCtx?.availableTemplates?.map((template, key) =>
-                    template.category === undefined ? (
-                      <Card key={key}>{template.name}</Card>
-                    ) : (
-                      <></>
-                    ),
+              {category.toLowerCase() !== "generic" ? (
+                <ListWidget
+                  list={appCtx.availableTemplates?.filter(
+                    (obj) => obj.category === category,
                   )}
+                />
+              ) : (
+                <ListWidget
+                  list={appCtx.availableTemplates?.filter(
+                    (obj) => obj.category === undefined,
+                  )}
+                />
+              )}
             </Category>
           ))}
         </Box>
-        <Box sx={{ border: "solid 1px black", width: "50%" }}>
+        <Box
+          sx={{
+            flexGrow: 1,
+            flex: "350px",
+            border: `solid 1px ${theme.colors.secondary}`,
+          }}
+        >
           {open ? <Form open={open} /> : <Board />}
         </Box>
       </Box>
