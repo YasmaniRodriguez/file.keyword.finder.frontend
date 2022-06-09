@@ -6,7 +6,6 @@ import { Templates } from "../../assets/types";
 interface Props {
   handleClick: (arg0: Templates) => void;
   list: Templates[] | undefined;
-  //type: string;
 }
 const ListWidget = (props: Props) => {
   return (

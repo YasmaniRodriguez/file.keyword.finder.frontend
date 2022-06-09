@@ -82,6 +82,8 @@ const Template = (props: Props) => {
         </Box>
         <Box
           sx={{
+            display: "flex",
+            flexDirection: "column",
             flexGrow: 1,
             flex: "350px",
             border: `solid 1px ${theme.colors.secondary}`,
@@ -90,11 +92,11 @@ const Template = (props: Props) => {
           <Box
             sx={{
               width: "100%",
-              height: "10%",
+              height: "7vh",
               display: "flex",
               padding: "5px",
               alignItems: "center",
-              background: "whitesmoke",
+              background: theme.colors.tertiary,
               justifyContent: "space-between",
             }}
           >
@@ -104,6 +106,7 @@ const Template = (props: Props) => {
                 overflow: "hidden",
                 whiteSpace: "nowrap",
                 textOverflow: "ellipsis",
+                color: theme.colors.pentarius,
               }}
             >
               {selected?.name}
@@ -118,7 +121,13 @@ const Template = (props: Props) => {
               </Button>
             )}
           </Box>
-          <Box>{open ? <Form open={open} /> : <Board />}</Box>
+          <Box sx={{ height: "90%" }}>
+            {open ? (
+              <Form open={open} />
+            ) : (
+              <Board keywords={selected?.keywords} />
+            )}
+          </Box>
         </Box>
       </Box>
     </StyledCopywriting>

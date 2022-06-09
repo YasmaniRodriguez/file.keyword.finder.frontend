@@ -10,17 +10,24 @@ interface Props {
 const Category = (props: Props) => {
   return (
     <Box sx={{ width: "100%" }}>
-      <Typography
+      <Box
         sx={{
-          padding: "1vh 5px",
           background: theme.colors.tertiary,
-          verticalAlign: "center",
-          textTransform: "capitalize",
-          color: theme.colors.pentarius,
+          height: "7vh",
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        {props.name}
-      </Typography>
+        <Typography
+          sx={{
+            textTransform: "capitalize",
+            color: theme.colors.pentarius,
+          }}
+        >
+          {props.name}
+        </Typography>
+      </Box>
+
       <Box
         sx={{
           width: "100%",
