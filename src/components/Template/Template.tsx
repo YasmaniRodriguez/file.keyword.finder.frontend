@@ -7,12 +7,25 @@ import Form from "./Form";
 import Board from "./Board";
 import Category from "./Category";
 import ListWidget from "../../widgets/ListWidget/ListWidget";
+import { Templates } from "../../assets/types";
 
 interface Props {}
 
 const Template = (props: Props) => {
   const appCtx = useContext(AppContext);
-  const [open, setOpen] = useState(true);
+  const [selected, setSelected] = useState<Templates | undefined>();
+  const [open, setOpen] = useState(false);
+
+  const handleSelected = (arg0: Templates) => {
+    if (!open) {
+      setSelected(arg0);
+    }
+  };
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
     <StyledCopywriting>
       <Box
@@ -51,12 +64,14 @@ const Template = (props: Props) => {
             <Category name={category} key={key}>
               {category.toLowerCase() !== "generic" ? (
                 <ListWidget
+                  handleClick={handleSelected}
                   list={appCtx.availableTemplates?.filter(
                     (obj) => obj.category === category,
                   )}
                 />
               ) : (
                 <ListWidget
+                  handleClick={handleSelected}
                   list={appCtx.availableTemplates?.filter(
                     (obj) => obj.category === undefined,
                   )}
@@ -72,7 +87,38 @@ const Template = (props: Props) => {
             border: `solid 1px ${theme.colors.secondary}`,
           }}
         >
-          {open ? <Form open={open} /> : <Board />}
+          <Box
+            sx={{
+              width: "100%",
+              height: "10%",
+              display: "flex",
+              padding: "5px",
+              alignItems: "center",
+              background: "whitesmoke",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography
+              sx={{
+                maxHeight: "100%",
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {selected?.name}
+            </Typography>
+            {selected?.name.length === 0 ? (
+              <></>
+            ) : open ? (
+              <></>
+            ) : (
+              <Button onClick={handleOpen} variant="outlined" size="small">
+                Edit
+              </Button>
+            )}
+          </Box>
+          <Box>{open ? <Form open={open} /> : <Board />}</Box>
         </Box>
       </Box>
     </StyledCopywriting>

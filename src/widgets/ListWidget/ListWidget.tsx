@@ -1,19 +1,11 @@
 import React from "react";
 import { StyledListWidget, StyledListItemButton } from "./StyledListWidget";
 import { ListItem, ListItemText } from "@mui/material";
+import { Templates } from "../../assets/types";
 
 interface Props {
-  // handleClick: (arg0: {
-  //   name: string;
-  //   type: string;
-  //   source?: string | { name: string; operator: string; value: number }[];
-  // }) => void;
-  list:
-    | {
-        name: string;
-        source?: string | { name: string; operator: string; value: number }[];
-      }[]
-    | undefined;
+  handleClick: (arg0: Templates) => void;
+  list: Templates[] | undefined;
   //type: string;
 }
 const ListWidget = (props: Props) => {
@@ -22,9 +14,9 @@ const ListWidget = (props: Props) => {
       {props.list?.map((item, key) => (
         <ListItem key={key} divider={true}>
           <StyledListItemButton
-          // onClick={() => {
-          //   props.handleClick({ ...item, type: props.type });
-          // }}
+            onClick={() => {
+              props.handleClick(item);
+            }}
           >
             <ListItemText primary={item.name} />
           </StyledListItemButton>
