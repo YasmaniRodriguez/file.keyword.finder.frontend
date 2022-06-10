@@ -7,6 +7,7 @@ import React, {
 import { Box, Typography, Button, TextField } from "@mui/material";
 import { Settings as SettingsIcon } from "@mui/icons-material";
 import SelectWidget from "../../widgets/SelectWidget/SelectWidget";
+import { AppContext } from "../../contexts/AppContext";
 import StyledSearch from "./StyledSearch";
 import Keyword from "../Keyword/Keyword";
 
@@ -20,6 +21,7 @@ interface Props {
 }
 
 const Search = (props: Props) => {
+  const appCtx = useContext(AppContext);
   const { keyword, changeKeyword, handleKeyDown, handleClick } = props;
   return (
     <StyledSearch>
@@ -71,7 +73,10 @@ const Search = (props: Props) => {
           placeholder="Add keywords to find"
           fullWidth
         />
-        <Keyword />
+        <Keyword
+          keywords={appCtx?.order?.keywords}
+          deleteKeyword={appCtx?.deleteOrderKeyword}
+        />
         <Button
           aria-label="order-submit"
           size="large"

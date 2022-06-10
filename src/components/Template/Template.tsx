@@ -125,7 +125,7 @@ const Template = (props: Props) => {
             {open ? (
               <Form open={open} />
             ) : (
-              <Board keywords={selected?.keywords} />
+              <Board keywords={selected?.keywords} deleteKeyword={() => {}} />
             )}
           </Box>
         </Box>
