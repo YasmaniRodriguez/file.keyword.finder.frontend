@@ -23,7 +23,7 @@ const NavBar = (props: Props) => {
         }}
       >
         <Typography component={"h1"} variant="h1">
-          Brochures
+          Keyword Matcher
         </Typography>
       </Box>
       <Box sx={{ flexGrow: 2, height: "100%" }}></Box>

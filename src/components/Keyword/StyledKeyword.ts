@@ -21,6 +21,7 @@ const StyledKeyword = styled(Box)`
   border: solid 1px ${theme.colors.secondary};
   border-radius: 5px;
   height: 30vh;
+  width: 100%;
   margin: 10px 0;
   overflow: hidden scroll;
 

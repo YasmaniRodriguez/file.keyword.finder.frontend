@@ -7,6 +7,7 @@ import Form from "./Form";
 import Board from "./Board";
 import Category from "./Category";
 import ListWidget from "../../widgets/ListWidget/ListWidget";
+import FloatingActionButton from "../../widgets/FloatingActionButton/FloatingActionButton";
 import { Templates } from "../../assets/types";
 
 interface Props {}
@@ -14,7 +15,7 @@ interface Props {}
 const Template = (props: Props) => {
   const appCtx = useContext(AppContext);
   const [selected, setSelected] = useState<Templates | undefined>();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const handleSelected = (arg0: Templates) => {
     if (!open) {
@@ -127,6 +128,7 @@ const Template = (props: Props) => {
             ) : (
               <Board keywords={selected?.keywords} deleteKeyword={() => {}} />
             )}
+            <FloatingActionButton />
           </Box>
         </Box>
       </Box>
