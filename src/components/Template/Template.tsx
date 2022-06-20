@@ -51,12 +51,12 @@ const Template = (props: Props) => {
 
             "&::-webkit-scrollbar-track": {
               background: "rgba(255, 255, 255, 0.2)",
-              "-webkit-backdrop-filter": " blur(5px)",
+              webkitBackdropFilter: " blur(5px)",
               backdropFilter: "blur(5px)",
             },
             "&::-webkit-scrollbar-thumb": {
               background: "rgba(214, 214, 214, 0.48)",
-              "-webkit-backdrop-filter": "blur(10px)",
+              webkitBackdropFilter: "blur(10px)",
               backdropFilter: "blur(10px)",
             },
           }}

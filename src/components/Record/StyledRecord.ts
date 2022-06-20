@@ -14,14 +14,14 @@ const StyledRecord = styled(Box)`
       font-size: calc(0.9vw + 0.9vh + 0.5vmin);
       text-overflow: ellipsis;
     }
-    & p:nth-child(1) {
+    & p:nth-of-type(1) {
       font-weight: bold;
       color: ${theme.colors.secondary};
       ::after {
         content: ":";
       }
     }
-    & p:nth-child(2) {
+    & p:nth-of-type(2) {
       width: 50%;
       margin-left: 5px;
     }
