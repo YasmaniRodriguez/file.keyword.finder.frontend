@@ -1,12 +1,13 @@
 import React, {
   useContext,
+  useState,
   ChangeEvent,
   KeyboardEvent,
   MouseEvent,
 } from "react";
-import { Box, Typography, Button, TextField } from "@mui/material";
+import { Box, Typography, Button, TextField, MenuItem } from "@mui/material";
 import { Settings as SettingsIcon } from "@mui/icons-material";
-import SelectWidget from "../../widgets/SelectWidget/SelectWidget";
+//import SelectWidget from "../../widgets/SelectWidget/SelectWidget";
 import { AppContext } from "../../contexts/AppContext";
 import StyledSearch from "./StyledSearch";
 import Keyword from "../Keyword/Keyword";
@@ -23,6 +24,21 @@ interface Props {
 const Search = (props: Props) => {
   const appCtx = useContext(AppContext);
   const { keyword, changeKeyword, handleKeyDown, handleClick } = props;
+
+  const [template, setTemplate] = useState("");
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setTemplate(event.target.value);
+
+    const tags = appCtx?.availableTemplates?.find(
+      (template) => template.name === event.target.value,
+    )?.keywords;
+
+    tags?.forEach((element) => {
+      appCtx?.addOrderKeyword(element);
+    });
+  };
+
   return (
     <StyledSearch>
       <Typography className="order-title" variant="h5" component={"h5"}>
@@ -55,7 +71,22 @@ const Search = (props: Props) => {
             },
           }}
         >
-          <SelectWidget />
+          <TextField
+            fullWidth
+            size="small"
+            label="Template"
+            select
+            value={template}
+            onChange={handleChange}
+          >
+            {appCtx?.availableTemplates?.map((template, key) => (
+              <MenuItem key={key} value={template.name}>
+                {template.name}
+              </MenuItem>
+            ))}
+          </TextField>
+          {/* <SelectWidget /> */}
+
           <Button
             disableElevation={true}
             aria-label="template-settings"
