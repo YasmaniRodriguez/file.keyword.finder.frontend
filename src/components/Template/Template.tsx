@@ -1,9 +1,16 @@
-import React, { useState, useContext, SyntheticEvent } from "react";
+import React, {
+  useState,
+  useContext,
+  SyntheticEvent,
+  KeyboardEvent,
+  MouseEvent,
+  ChangeEvent,
+} from "react";
 import {
   Box,
   Typography,
-  Button,
   IconButton,
+  Button,
   Card,
   CardHeader,
   Avatar,
@@ -12,85 +19,102 @@ import {
   Tabs,
   Tab,
   Chip,
+  TextField,
 } from "@mui/material";
 import { AppContext } from "../../contexts/AppContext";
 import StyledTemplate from "./StyledTemplate";
-import { theme } from "../../assets/themes";
-import Form from "./Form";
-import Board from "./Board";
-import Category from "./Category";
-import ListWidget from "../../widgets/ListWidget/ListWidget";
+import { theme, cardContainerStyles, scrollStyles } from "../../assets/themes";
+//import Form from "./Form";
+//import Board from "./Board";
+//import Category from "./Category";
+//import ListWidget from "../../widgets/ListWidget/ListWidget";
 import TabPanel from "../../widgets/TabPanel/TabPanel";
 //import FAB from "../../widgets/FloatingActionButton/FloatingActionButton";
 import { Templates } from "../../assets/types";
 
 interface Props {}
 
-const BoxStyles = {
-  padding: "10px",
-  height: "100%",
-  with: "100%",
-  margin: "auto",
-  display: "flex",
-  flexWrap: "wrap",
-
-  "& .MuiPaper-root": {
-    margin: "5px",
-    height: "250px",
-    width: "250px",
-  },
-  overflow: "hidden scroll",
-  " &::-webkit-scrollbar": { width: "12px" },
-  " &::-webkit-scrollbar-track": {
-    background: "rgba(255, 255, 255, 0.2)",
-    WebkitBackdropFilter: "blur(5px)",
-    backdropFilter: "blur(5px)",
-  },
-  " &::-webkit-scrollbar-thumb": {
-    background: "rgba(214, 214, 214, 0.48)",
-    WebkitBackdropFilter: "blur(10px)",
-    backdropFilter: "blur(10px)",
-  },
-};
-
 const Template = (props: Props) => {
   const appCtx = useContext(AppContext);
 
-  const [selected, setSelected] = useState<Templates | undefined>();
+  //  const [selected, setSelected] = useState<Templates | undefined>();
 
-  const [openForm, setOpenForm] = useState(true);
+  const [openCategoryForm, setOpenCategoryForm] = useState(false);
+  const [category, setCategory] = useState<string | undefined>();
+  const [openTemplateForm, setOpenTemplateForm] = useState(false);
 
-  const [tab, setTab] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(0);
 
-  const handleSelected = (arg0: Templates) => {
-    if (!openForm) {
-      setSelected(arg0);
-    }
-  };
+  // const handleSelected = (arg0: Templates) => {
+  //   if (!openTemplateForm) {
+  //     setSelected(arg0);
+  //   }
+  // };
 
   const handleTabChange = (event: SyntheticEvent, newValue: number) => {
-    setTab(newValue);
+    setSelectedTab(newValue);
   };
 
-  const handleOpenForm = () => {
-    setOpenForm(!openForm);
+  const handleOpenTemplateForm = () => {
+    setOpenTemplateForm(!openTemplateForm);
+  };
+
+  const handleOpenCategoryForm = () => {
+    setOpenCategoryForm(!openCategoryForm);
+  };
+
+  const changeCategory = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    let value = (event.currentTarget as HTMLInputElement).value;
+    setCategory(value);
+  };
+
+  const handleCategoryFormKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" && category !== undefined) {
+      handleOpenCategoryForm();
+      setCategory(undefined);
+    }
   };
 
   return (
     <StyledTemplate>
       <Box
         sx={{
-          border: "solid 1px red",
           width: "30%",
           display: "flex",
+          padding: "10px",
           flexDirection: "column",
+          border: `1px ${theme.colors.secondary}`,
+          borderStyle: "solid solid solid solid",
         }}
       >
-        <Button variant="outlined">Add new Category</Button>
+        <Box sx={{ width: "100%", display: "flex", marginBottom: "5px" }}>
+          {openCategoryForm ? (
+            <TextField
+              id="category"
+              size="small"
+              value={category}
+              onChange={(e) => changeCategory(e)}
+              onKeyDown={(e) => handleCategoryFormKeyDown(e)}
+              placeholder="Category Name"
+              fullWidth
+            />
+          ) : (
+            <Button
+              sx={{ width: "100%" }}
+              variant="outlined"
+              onClick={handleOpenCategoryForm}
+            >
+              Add New Category
+            </Button>
+          )}
+        </Box>
+
         <Tabs
           orientation="vertical"
           variant="fullWidth"
-          value={tab}
+          value={selectedTab}
           selectionFollowsFocus
           onChange={handleTabChange}
           aria-label="templates category tabs"
@@ -103,11 +127,17 @@ const Template = (props: Props) => {
           ))}
         </Tabs>
       </Box>
-      <Box sx={{ border: "solid 1px red", width: "70%" }}>
+      <Box
+        sx={{
+          width: "70%",
+          border: `1px ${theme.colors.secondary}`,
+          borderStyle: "solid solid solid none",
+        }}
+      >
         {appCtx?.availableCategories.map((category, key) => (
-          <TabPanel value={tab} index={key}>
+          <TabPanel key={key} value={selectedTab} index={key}>
             {category.toLowerCase() !== "generic" ? (
-              <Box sx={BoxStyles}>
+              <Box sx={cardContainerStyles}>
                 {appCtx?.availableTemplates
                   ?.filter((template) => template.category === category)
                   .map((template, key) => (
@@ -121,23 +151,18 @@ const Template = (props: Props) => {
                         sx={{
                           height: "45%",
                           display: "flex",
+
                           flexWrap: "wrap",
                           overflow: "hidden scroll",
-                          " &::-webkit-scrollbar": { width: "12px" },
-                          " &::-webkit-scrollbar-track": {
-                            background: "rgba(255, 255, 255, 0.2)",
-                            WebkitBackdropFilter: "blur(5px)",
-                            backdropFilter: "blur(5px)",
-                          },
-                          " &::-webkit-scrollbar-thumb": {
-                            background: "rgba(214, 214, 214, 0.48)",
-                            WebkitBackdropFilter: "blur(10px)",
-                            backdropFilter: "blur(10px)",
-                          },
+                          ...scrollStyles,
                         }}
                       >
                         {template?.keywords?.map((keyword, key) => (
-                          <Chip key={key} label={keyword} />
+                          <Chip
+                            sx={{ margin: "1px" }}
+                            key={key}
+                            label={keyword}
+                          />
                         ))}
                       </CardContent>
                       <CardActions>
@@ -152,7 +177,7 @@ const Template = (props: Props) => {
                   ))}
               </Box>
             ) : (
-              <Box sx={BoxStyles}>
+              <Box sx={cardContainerStyles}>
                 {appCtx.availableTemplates
                   ?.filter((obj) => obj.category === undefined)
                   .map((template, key) => (
@@ -168,21 +193,15 @@ const Template = (props: Props) => {
                           display: "flex",
                           flexWrap: "wrap",
                           overflow: "hidden scroll",
-                          " &::-webkit-scrollbar": { width: "12px" },
-                          " &::-webkit-scrollbar-track": {
-                            background: "rgba(255, 255, 255, 0.2)",
-                            WebkitBackdropFilter: "blur(5px)",
-                            backdropFilter: "blur(5px)",
-                          },
-                          " &::-webkit-scrollbar-thumb": {
-                            background: "rgba(214, 214, 214, 0.48)",
-                            WebkitBackdropFilter: "blur(10px)",
-                            backdropFilter: "blur(10px)",
-                          },
+                          ...scrollStyles,
                         }}
                       >
                         {template?.keywords?.map((keyword, key) => (
-                          <Chip key={key} label={keyword} />
+                          <Chip
+                            sx={{ margin: "1px" }}
+                            key={key}
+                            label={keyword}
+                          />
                         ))}
                       </CardContent>
                       <CardActions>
@@ -207,38 +226,8 @@ const Template = (props: Props) => {
 export default Template;
 
 {
-  /* <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          height: "100%",
-          padding: "5px",
-          border: `solid 1px ${theme.colors.secondary}`,
-        }}
-      >
-        <Box
-          sx={{
-            border: `solid 1px ${theme.colors.secondary}`,
-            flexGrow: 1,
-            flex: "350px",
-            overflow: "hidden scroll",
-
-            "&::-webkit-scrollbar": {
-              width: "12px",
-            },
-
-            "&::-webkit-scrollbar-track": {
-              background: "rgba(255, 255, 255, 0.2)",
-              webkitBackdropFilter: " blur(5px)",
-              backdropFilter: "blur(5px)",
-            },
-            "&::-webkit-scrollbar-thumb": {
-              background: "rgba(214, 214, 214, 0.48)",
-              webkitBackdropFilter: "blur(10px)",
-              backdropFilter: "blur(10px)",
-            },
-          }}
-        >
+  /* <Box>
+        <Box>
           {appCtx?.availableCategories?.map((category, key) => (
             <Category name={category} key={key}>
               {category.toLowerCase() !== "generic" ? (
@@ -259,35 +248,9 @@ export default Template;
             </Category>
           ))}
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            flexGrow: 1,
-            flex: "350px",
-            border: `solid 1px ${theme.colors.secondary}`,
-          }}
-        >
-          <Box
-            sx={{
-              width: "100%",
-              height: "7vh",
-              display: "flex",
-              padding: "5px",
-              alignItems: "center",
-              background: theme.colors.tertiary,
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography
-              sx={{
-                maxHeight: "100%",
-                overflow: "hidden",
-                whiteSpace: "nowrap",
-                textOverflow: "ellipsis",
-                color: theme.colors.pentarius,
-              }}
-            >
+        <Box>
+          <Box>
+            <Typography>
               {selected?.name}
             </Typography>
             {selected?.name.length === 0 ? (

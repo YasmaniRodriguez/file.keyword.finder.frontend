@@ -26,4 +26,45 @@ const media = {
   greaterThanMobile: "@media screen and (min-width: 55rem)",
 };
 
-export { theme, media };
+const scrollStyles = {
+  " &::-webkit-scrollbar": { width: "12px" },
+  " &::-webkit-scrollbar-track": {
+    background: "rgba(255, 255, 255, 0.2)",
+    WebkitBackdropFilter: "blur(5px)",
+    backdropFilter: "blur(5px)",
+  },
+  " &::-webkit-scrollbar-thumb": {
+    background: "rgba(214, 214, 214, 0.48)",
+    WebkitBackdropFilter: "blur(10px)",
+    backdropFilter: "blur(10px)",
+  },
+};
+
+const cardContainerStyles = {
+  padding: "10px",
+  height: "100%",
+  with: "100%",
+  margin: "auto",
+  display: "flex",
+  flexWrap: "wrap",
+
+  "& .MuiPaper-root": {
+    margin: "5px",
+    height: "250px",
+    width: "250px",
+  },
+  overflow: "hidden scroll",
+  " &::-webkit-scrollbar": { width: "12px" },
+  " &::-webkit-scrollbar-track": {
+    background: "rgba(255, 255, 255, 0.2)",
+    WebkitBackdropFilter: "blur(5px)",
+    backdropFilter: "blur(5px)",
+  },
+  " &::-webkit-scrollbar-thumb": {
+    background: "rgba(214, 214, 214, 0.48)",
+    WebkitBackdropFilter: "blur(10px)",
+    backdropFilter: "blur(10px)",
+  },
+};
+
+export { theme, media, scrollStyles, cardContainerStyles };

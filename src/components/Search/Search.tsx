@@ -73,7 +73,6 @@ const Search = (props: Props) => {
         >
           <TextField
             fullWidth
-            size="small"
             label="Template"
             select
             value={template}
@@ -85,7 +84,6 @@ const Search = (props: Props) => {
               </MenuItem>
             ))}
           </TextField>
-          {/* <SelectWidget /> */}
 
           <Button
             disableElevation={true}

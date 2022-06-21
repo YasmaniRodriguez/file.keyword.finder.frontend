@@ -13,6 +13,12 @@ const StyledDialog = styled(Dialog)`
     align-items: center;
     text-transform: capitalize;
   }
+
+  & .MuiDialogContent-root {
+    overflow: hidden hidden;
+    display: flex;
+    padding: 10px;
+  }
 `;
 
 export default StyledDialog;
