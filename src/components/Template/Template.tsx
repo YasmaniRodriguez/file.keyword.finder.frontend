@@ -72,6 +72,7 @@ const Template = (props: Props) => {
 
   const handleCategoryFormKeyEvent = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" && category !== undefined) {
+      appCtx?.addCategory(category);
       handleOpenCategoryForm();
       setCategory(undefined);
     }
