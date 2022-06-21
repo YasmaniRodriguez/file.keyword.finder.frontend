@@ -70,8 +70,12 @@ const Template = (props: Props) => {
     setCategory(value);
   };
 
-  const handleCategoryFormKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+  const handleCategoryFormKeyEvent = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" && category !== undefined) {
+      handleOpenCategoryForm();
+      setCategory(undefined);
+    }
+    if (event.key === "Escape") {
       handleOpenCategoryForm();
       setCategory(undefined);
     }
@@ -96,7 +100,7 @@ const Template = (props: Props) => {
               size="small"
               value={category}
               onChange={(e) => changeCategory(e)}
-              onKeyDown={(e) => handleCategoryFormKeyDown(e)}
+              onKeyDown={(e) => handleCategoryFormKeyEvent(e)}
               placeholder="Category Name"
               fullWidth
             />
