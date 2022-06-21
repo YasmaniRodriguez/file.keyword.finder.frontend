@@ -54,17 +54,7 @@ const cardContainerStyles = {
     width: "250px",
   },
   overflow: "hidden scroll",
-  " &::-webkit-scrollbar": { width: "12px" },
-  " &::-webkit-scrollbar-track": {
-    background: "rgba(255, 255, 255, 0.2)",
-    WebkitBackdropFilter: "blur(5px)",
-    backdropFilter: "blur(5px)",
-  },
-  " &::-webkit-scrollbar-thumb": {
-    background: "rgba(214, 214, 214, 0.48)",
-    WebkitBackdropFilter: "blur(10px)",
-    backdropFilter: "blur(10px)",
-  },
+  ...scrollStyles,
 };
 
 export { theme, media, scrollStyles, cardContainerStyles };
