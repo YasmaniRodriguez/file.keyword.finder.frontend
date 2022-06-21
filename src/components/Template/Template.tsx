@@ -1,35 +1,213 @@
-import React, { useState, useContext } from "react";
-import { Box, Typography, Button, IconButton, Card } from "@mui/material";
+import React, { useState, useContext, SyntheticEvent } from "react";
+import {
+  Box,
+  Typography,
+  Button,
+  IconButton,
+  Card,
+  CardHeader,
+  Avatar,
+  CardContent,
+  CardActions,
+  Tabs,
+  Tab,
+  Chip,
+} from "@mui/material";
 import { AppContext } from "../../contexts/AppContext";
-import StyledCopywriting from "./StyledTemplate";
+import StyledTemplate from "./StyledTemplate";
 import { theme } from "../../assets/themes";
 import Form from "./Form";
 import Board from "./Board";
 import Category from "./Category";
 import ListWidget from "../../widgets/ListWidget/ListWidget";
-import FloatingActionButton from "../../widgets/FloatingActionButton/FloatingActionButton";
+import TabPanel from "../../widgets/TabPanel/TabPanel";
+//import FAB from "../../widgets/FloatingActionButton/FloatingActionButton";
 import { Templates } from "../../assets/types";
 
 interface Props {}
 
+const BoxStyles = {
+  padding: "10px",
+  height: "100%",
+  with: "100%",
+  margin: "auto",
+  display: "flex",
+  flexWrap: "wrap",
+
+  "& .MuiPaper-root": {
+    margin: "5px",
+    height: "250px",
+    width: "250px",
+  },
+  overflow: "hidden scroll",
+  " &::-webkit-scrollbar": { width: "12px" },
+  " &::-webkit-scrollbar-track": {
+    background: "rgba(255, 255, 255, 0.2)",
+    WebkitBackdropFilter: "blur(5px)",
+    backdropFilter: "blur(5px)",
+  },
+  " &::-webkit-scrollbar-thumb": {
+    background: "rgba(214, 214, 214, 0.48)",
+    WebkitBackdropFilter: "blur(10px)",
+    backdropFilter: "blur(10px)",
+  },
+};
+
 const Template = (props: Props) => {
   const appCtx = useContext(AppContext);
+
   const [selected, setSelected] = useState<Templates | undefined>();
-  const [open, setOpen] = useState(true);
+
+  const [openForm, setOpenForm] = useState(true);
+
+  const [tab, setTab] = useState(0);
 
   const handleSelected = (arg0: Templates) => {
-    if (!open) {
+    if (!openForm) {
       setSelected(arg0);
     }
   };
 
-  const handleOpen = () => {
-    setOpen(!open);
+  const handleTabChange = (event: SyntheticEvent, newValue: number) => {
+    setTab(newValue);
+  };
+
+  const handleOpenForm = () => {
+    setOpenForm(!openForm);
   };
 
   return (
-    <StyledCopywriting>
+    <StyledTemplate>
       <Box
+        sx={{
+          border: "solid 1px red",
+          width: "30%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Button variant="outlined">Add new Category</Button>
+        <Tabs
+          orientation="vertical"
+          variant="fullWidth"
+          value={tab}
+          selectionFollowsFocus
+          onChange={handleTabChange}
+          aria-label="templates category tabs"
+          sx={{
+            "& .MuiTab-root": { alignItems: "flex-start" },
+          }}
+        >
+          {appCtx?.availableCategories.map((category, key) => (
+            <Tab key={key} label={category} />
+          ))}
+        </Tabs>
+      </Box>
+      <Box sx={{ border: "solid 1px red", width: "70%" }}>
+        {appCtx?.availableCategories.map((category, key) => (
+          <TabPanel value={tab} index={key}>
+            {category.toLowerCase() !== "generic" ? (
+              <Box sx={BoxStyles}>
+                {appCtx?.availableTemplates
+                  ?.filter((template) => template.category === category)
+                  .map((template, key) => (
+                    <Card key={key}>
+                      <CardHeader
+                        avatar={<Avatar>T</Avatar>}
+                        title={template.name}
+                        subheader={template.category}
+                      />
+                      <CardContent
+                        sx={{
+                          height: "45%",
+                          display: "flex",
+                          flexWrap: "wrap",
+                          overflow: "hidden scroll",
+                          " &::-webkit-scrollbar": { width: "12px" },
+                          " &::-webkit-scrollbar-track": {
+                            background: "rgba(255, 255, 255, 0.2)",
+                            WebkitBackdropFilter: "blur(5px)",
+                            backdropFilter: "blur(5px)",
+                          },
+                          " &::-webkit-scrollbar-thumb": {
+                            background: "rgba(214, 214, 214, 0.48)",
+                            WebkitBackdropFilter: "blur(10px)",
+                            backdropFilter: "blur(10px)",
+                          },
+                        }}
+                      >
+                        {template?.keywords?.map((keyword, key) => (
+                          <Chip key={key} label={keyword} />
+                        ))}
+                      </CardContent>
+                      <CardActions>
+                        <Button size="small" color="secondary">
+                          Delete
+                        </Button>
+                        <Button size="small" color="primary">
+                          Edit
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  ))}
+              </Box>
+            ) : (
+              <Box sx={BoxStyles}>
+                {appCtx.availableTemplates
+                  ?.filter((obj) => obj.category === undefined)
+                  .map((template, key) => (
+                    <Card key={key}>
+                      <CardHeader
+                        avatar={<Avatar>T</Avatar>}
+                        title={template.name}
+                        subheader={template.category}
+                      />
+                      <CardContent
+                        sx={{
+                          height: "45%",
+                          display: "flex",
+                          flexWrap: "wrap",
+                          overflow: "hidden scroll",
+                          " &::-webkit-scrollbar": { width: "12px" },
+                          " &::-webkit-scrollbar-track": {
+                            background: "rgba(255, 255, 255, 0.2)",
+                            WebkitBackdropFilter: "blur(5px)",
+                            backdropFilter: "blur(5px)",
+                          },
+                          " &::-webkit-scrollbar-thumb": {
+                            background: "rgba(214, 214, 214, 0.48)",
+                            WebkitBackdropFilter: "blur(10px)",
+                            backdropFilter: "blur(10px)",
+                          },
+                        }}
+                      >
+                        {template?.keywords?.map((keyword, key) => (
+                          <Chip key={key} label={keyword} />
+                        ))}
+                      </CardContent>
+                      <CardActions>
+                        <Button size="small" color="secondary">
+                          Delete
+                        </Button>
+                        <Button size="small" color="primary">
+                          Edit
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  ))}
+              </Box>
+            )}
+          </TabPanel>
+        ))}
+      </Box>
+    </StyledTemplate>
+  );
+};
+
+export default Template;
+
+{
+  /* <Box
         sx={{
           display: "flex",
           flexWrap: "wrap",
@@ -131,9 +309,5 @@ const Template = (props: Props) => {
             <FloatingActionButton />
           </Box>
         </Box>
-      </Box>
-    </StyledCopywriting>
-  );
-};
-
-export default Template;
+      </Box> */
+}
