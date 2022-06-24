@@ -149,7 +149,7 @@ const Template = (props: Props) => {
             padding: "10px",
           }}
         >
-          <Typography>{`MY ${selectedTab.label} TEMPLATES`}</Typography>
+          <Typography>{`${selectedTab.label} TEMPLATES`}</Typography>
           <Button variant="outlined">Add New Template</Button>
         </Box>
         {appCtx?.availableCategories.map((category, key) => (
