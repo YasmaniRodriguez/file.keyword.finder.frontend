@@ -43,7 +43,7 @@ const Template = (props: Props) => {
   const [category, setCategory] = useState<string | undefined>();
   const [openTemplateForm, setOpenTemplateForm] = useState(false);
 
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTab, setSelectedTab] = useState({ key: 0, label: "GENERIC" });
 
   // const handleSelected = (arg0: Templates) => {
   //   if (!openTemplateForm) {
@@ -52,7 +52,8 @@ const Template = (props: Props) => {
   // };
 
   const handleTabChange = (event: SyntheticEvent, newValue: number) => {
-    setSelectedTab(newValue);
+    let label = (event.currentTarget as HTMLButtonElement).innerText;
+    setSelectedTab({ key: newValue, label: label });
   };
 
   const handleOpenTemplateForm = () => {
@@ -91,7 +92,7 @@ const Template = (props: Props) => {
           padding: "10px",
           flexDirection: "column",
           border: `1px ${theme.colors.secondary}`,
-          borderStyle: "solid solid solid solid",
+          borderStyle: "solid solid none none",
         }}
       >
         <Box sx={{ width: "100%", display: "flex", marginBottom: "5px" }}>
@@ -119,7 +120,7 @@ const Template = (props: Props) => {
         <Tabs
           orientation="vertical"
           variant="fullWidth"
-          value={selectedTab}
+          value={selectedTab.key}
           selectionFollowsFocus
           onChange={handleTabChange}
           aria-label="templates category tabs"
@@ -136,11 +137,23 @@ const Template = (props: Props) => {
         sx={{
           width: "70%",
           border: `1px ${theme.colors.secondary}`,
-          borderStyle: "solid solid solid none",
+          borderStyle: "solid none none none",
         }}
       >
+        <Box
+          sx={{
+            height: "10%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "10px",
+          }}
+        >
+          <Typography>{`${selectedTab.label} TEMPLATES`}</Typography>
+          <Button variant="outlined">Add New Template</Button>
+        </Box>
         {appCtx?.availableCategories.map((category, key) => (
-          <TabPanel key={key} value={selectedTab} index={key}>
+          <TabPanel key={key} value={selectedTab.key} index={key}>
             {category.toLowerCase() !== "generic" ? (
               <Box sx={cardContainerStyles}>
                 {appCtx?.availableTemplates

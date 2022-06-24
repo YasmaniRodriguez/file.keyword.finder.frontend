@@ -9,7 +9,6 @@ interface Props {
 
 const TabPanel = (props: Props) => {
   const { children, value, index, ...other } = props;
-
   return (
     <StyledTabPanel
       role="tabpanel"

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Dialog } from "@mui/material";
+import { theme } from "../../assets/themes";
 
 const StyledDialog = styled(Dialog)`
   & .MuiDialog-paper {
