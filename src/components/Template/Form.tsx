@@ -4,6 +4,9 @@ import { Fade } from "@mui/material";
 
 interface Props {
   open: boolean;
+  caster: {} | undefined;
+  record: { [key: string]: any } | undefined;
+  changeRecord: (arg0: { [key: string]: any }) => void;
 }
 
 const Form = (props: Props) => {

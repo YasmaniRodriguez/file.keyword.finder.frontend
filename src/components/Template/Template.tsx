@@ -24,12 +24,13 @@ import {
 import { AppContext } from "../../contexts/AppContext";
 import StyledTemplate from "./StyledTemplate";
 import { theme, cardContainerStyles, scrollStyles } from "../../assets/themes";
-//import Form from "./Form";
+import Form from "./Form";
 //import Board from "./Board";
 //import Category from "./Category";
 //import ListWidget from "../../widgets/ListWidget/ListWidget";
 import TabPanel from "../../widgets/TabPanel/TabPanel";
-//import FAB from "../../widgets/FloatingActionButton/FloatingActionButton";
+import ItemViewer from "../../widgets/ItemViewer/ItemViewer";
+import FormWidget from "../../widgets/FormWidget/FormWidget";
 import { Templates } from "../../assets/types";
 
 interface Props {}
@@ -133,110 +134,133 @@ const Template = (props: Props) => {
           ))}
         </Tabs>
       </Box>
-      <Box
-        sx={{
-          width: "70%",
-          border: `1px ${theme.colors.secondary}`,
-          borderStyle: "solid none none none",
-        }}
-      >
+      {openTemplateForm ? (
+        <ItemViewer
+          styles={{ height: "100%", width: "100%", marginTop: "5px" }}
+        >
+          <FormWidget
+            caster={undefined}
+            spell="Add"
+            render={(caster, record, changeRecord) => (
+              <Form
+                open={openTemplateForm}
+                caster={caster}
+                record={record}
+                changeRecord={changeRecord}
+              />
+            )}
+            handleCancel={handleOpenTemplateForm}
+            handleConfirm={handleOpenTemplateForm}
+          />
+        </ItemViewer>
+      ) : (
         <Box
           sx={{
-            height: "10%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "10px",
+            width: "70%",
+            border: `1px ${theme.colors.secondary}`,
+            borderStyle: "solid none none none",
           }}
         >
-          <Typography>{`${selectedTab.label} TEMPLATES`}</Typography>
-          <Button variant="outlined">Add New Template</Button>
-        </Box>
-        {appCtx?.availableCategories.map((category, key) => (
-          <TabPanel key={key} value={selectedTab.key} index={key}>
-            {category.toLowerCase() !== "generic" ? (
-              <Box sx={cardContainerStyles}>
-                {appCtx?.availableTemplates
-                  ?.filter((template) => template.category === category)
-                  .map((template, key) => (
-                    <Card key={key}>
-                      <CardHeader
-                        avatar={<Avatar>T</Avatar>}
-                        title={template.name}
-                        subheader={template.category}
-                      />
-                      <CardContent
-                        sx={{
-                          height: "45%",
-                          display: "flex",
+          <Box
+            sx={{
+              height: "10%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "10px",
+            }}
+          >
+            <Typography>{`${selectedTab.label} TEMPLATES`}</Typography>
+            <Button variant="outlined" onClick={handleOpenTemplateForm}>
+              Add New Template
+            </Button>
+          </Box>
+          {appCtx?.availableCategories.map((category, key) => (
+            <TabPanel key={key} value={selectedTab.key} index={key}>
+              {category.toLowerCase() !== "generic" ? (
+                <Box sx={cardContainerStyles}>
+                  {appCtx?.availableTemplates
+                    ?.filter((template) => template.category === category)
+                    .map((template, key) => (
+                      <Card key={key}>
+                        <CardHeader
+                          avatar={<Avatar>T</Avatar>}
+                          title={template.name}
+                          subheader={template.category}
+                        />
+                        <CardContent
+                          sx={{
+                            height: "45%",
+                            display: "flex",
 
-                          flexWrap: "wrap",
-                          overflow: "hidden scroll",
-                          ...scrollStyles,
-                        }}
-                      >
-                        {template?.keywords?.map((keyword, key) => (
-                          <Chip
-                            sx={{ margin: "1px" }}
-                            key={key}
-                            label={keyword}
-                          />
-                        ))}
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small" color="secondary">
-                          Delete
-                        </Button>
-                        <Button size="small" color="primary">
-                          Edit
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  ))}
-              </Box>
-            ) : (
-              <Box sx={cardContainerStyles}>
-                {appCtx.availableTemplates
-                  ?.filter((obj) => obj.category === undefined)
-                  .map((template, key) => (
-                    <Card key={key}>
-                      <CardHeader
-                        avatar={<Avatar>T</Avatar>}
-                        title={template.name}
-                        subheader={template.category}
-                      />
-                      <CardContent
-                        sx={{
-                          height: "45%",
-                          display: "flex",
-                          flexWrap: "wrap",
-                          overflow: "hidden scroll",
-                          ...scrollStyles,
-                        }}
-                      >
-                        {template?.keywords?.map((keyword, key) => (
-                          <Chip
-                            sx={{ margin: "1px" }}
-                            key={key}
-                            label={keyword}
-                          />
-                        ))}
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small" color="secondary">
-                          Delete
-                        </Button>
-                        <Button size="small" color="primary">
-                          Edit
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  ))}
-              </Box>
-            )}
-          </TabPanel>
-        ))}
-      </Box>
+                            flexWrap: "wrap",
+                            overflow: "hidden scroll",
+                            ...scrollStyles,
+                          }}
+                        >
+                          {template?.keywords?.map((keyword, key) => (
+                            <Chip
+                              sx={{ margin: "1px" }}
+                              key={key}
+                              label={keyword}
+                            />
+                          ))}
+                        </CardContent>
+                        <CardActions>
+                          <Button size="small" color="secondary">
+                            Delete
+                          </Button>
+                          <Button size="small" color="primary">
+                            Edit
+                          </Button>
+                        </CardActions>
+                      </Card>
+                    ))}
+                </Box>
+              ) : (
+                <Box sx={cardContainerStyles}>
+                  {appCtx.availableTemplates
+                    ?.filter((obj) => obj.category === undefined)
+                    .map((template, key) => (
+                      <Card key={key}>
+                        <CardHeader
+                          avatar={<Avatar>T</Avatar>}
+                          title={template.name}
+                          subheader={template.category}
+                        />
+                        <CardContent
+                          sx={{
+                            height: "45%",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            overflow: "hidden scroll",
+                            ...scrollStyles,
+                          }}
+                        >
+                          {template?.keywords?.map((keyword, key) => (
+                            <Chip
+                              sx={{ margin: "1px" }}
+                              key={key}
+                              label={keyword}
+                            />
+                          ))}
+                        </CardContent>
+                        <CardActions>
+                          <Button size="small" color="secondary">
+                            Delete
+                          </Button>
+                          <Button size="small" color="primary">
+                            Edit
+                          </Button>
+                        </CardActions>
+                      </Card>
+                    ))}
+                </Box>
+              )}
+            </TabPanel>
+          ))}
+        </Box>
+      )}
     </StyledTemplate>
   );
 };

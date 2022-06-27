@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import { List, ListItemButton } from "@mui/material";
 
-const StyledListWidget = styled(List)`
+interface Props {}
+
+const StyledListWidget = styled(List)<Props>`
   width: 100%;
   height: 100%;
   -webkit-backdrop-filter: blur(10px);
