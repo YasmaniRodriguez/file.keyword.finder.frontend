@@ -135,7 +135,10 @@ const Template = (props: Props) => {
       </S.CategoryTabWrapper>
       <S.TemplateTabPanelWrapper>
         <S.TemplateTabPanelHeader>
-          <Typography>{`${selectedTab.label} TEMPLATES`}</Typography>
+          <Typography variant="h5">{`All ${
+            selectedTab.label[0].toUpperCase() +
+            selectedTab.label.slice(1).toLowerCase()
+          } Templates`}</Typography>
           {!openTemplateForm && (
             <Button variant="outlined" onClick={handleOpenTemplateForm}>
               Add New Template
