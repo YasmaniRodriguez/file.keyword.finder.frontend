@@ -110,6 +110,7 @@ const Template = (props: Props) => {
               onChange={(e) => changeCategory(e)}
               onKeyDown={(e) => handleCategoryFormKeyEvent(e)}
               placeholder="Category Name"
+              autoFocus
               fullWidth
             />
           ) : (
