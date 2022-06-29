@@ -38,9 +38,9 @@ const FormWidget = (props: Props) => {
         }}
       >
         <Typography variant="h6">
-          {`${spell === "Add" ? "Add New Template To" : "Edit Template From"} ${
+          {`${spell === "Add" ? "Add New" : "Edit A"} ${
             casterName[0].toUpperCase() + casterName.slice(1).toLowerCase()
-          } Category`}
+          } Template`}
         </Typography>
       </Box>
       <Box
