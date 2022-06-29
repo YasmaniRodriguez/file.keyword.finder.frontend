@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { Box, Typography, Button, TextField, MenuItem } from "@mui/material";
 import { Settings as SettingsIcon } from "@mui/icons-material";
-//import SelectWidget from "../../widgets/SelectWidget/SelectWidget";
+import { Templates } from "../../assets/types";
 import { AppContext } from "../../contexts/AppContext";
 import StyledSearch from "./StyledSearch";
 import Keyword from "../Keyword/Keyword";
@@ -19,18 +19,25 @@ interface Props {
   ) => void;
   handleKeyDown: (event: KeyboardEvent<HTMLDivElement>) => void;
   handleClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  availableTemplates: Templates[] | undefined;
 }
 
 const Search = (props: Props) => {
   const appCtx = useContext(AppContext);
-  const { keyword, changeKeyword, handleKeyDown, handleClick } = props;
+  const {
+    keyword,
+    changeKeyword,
+    handleKeyDown,
+    handleClick,
+    availableTemplates,
+  } = props;
 
   const [template, setTemplate] = useState("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTemplate(event.target.value);
 
-    const tags = appCtx?.availableTemplates?.find(
+    const tags = availableTemplates?.find(
       (template) => template.name === event.target.value,
     )?.keywords;
 
@@ -78,7 +85,7 @@ const Search = (props: Props) => {
             value={template}
             onChange={handleChange}
           >
-            {appCtx?.availableTemplates?.map((template, key) => (
+            {availableTemplates?.map((template, key) => (
               <MenuItem key={key} value={template.name}>
                 {template.name}
               </MenuItem>

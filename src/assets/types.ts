@@ -1,6 +1,8 @@
 import { SnackbarOrigin } from "@mui/material/Snackbar";
 import { AlertColor } from "@mui/material";
 
+type Categories = string;
+
 interface Settings {
   authenticated: boolean;
   languaje: string;
@@ -12,12 +14,6 @@ interface AppContextType {
   order: Orders | undefined;
   addOrderKeyword: (arg0: string) => void;
   deleteOrderKeyword: (arg0: string) => void;
-  availableCategories: string[];
-  addCategory: (arg0: string) => void;
-  deleteCategory: (arg0: string) => void;
-  availableTemplates: Templates[] | undefined;
-  addTemplate: (arg0: Templates) => void;
-  deleteTemplate: (arg0: Templates) => void;
 }
 
 interface DialogContextType {
@@ -67,6 +63,7 @@ export type {
   AppContextType,
   DialogContextType,
   SnackBarContextType,
+  Categories,
   Templates,
   Orders,
 };

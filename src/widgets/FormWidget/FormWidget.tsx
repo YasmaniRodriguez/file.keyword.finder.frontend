@@ -3,19 +3,22 @@ import StyledFormWidget from "./StyledFormWidget";
 import { Box, Button, Typography } from "@mui/material";
 
 interface Props {
-  caster: {} | undefined;
+  caster: { [key: string]: any } | undefined;
   spell: "Edit" | "Add";
   render: (
-    arg0: {} | undefined,
-    arg1: { [key: string]: any } | undefined,
-    arg2: (arg0: { [key: string]: any }) => void,
+    caster: {} | undefined,
+    record: { [key: string]: any } | undefined,
+    onChange: (arg0: { [key: string]: any }) => void,
   ) => JSX.Element;
+  styles: { [key: string]: any } | undefined;
   handleCancel: () => void;
   handleConfirm: () => void;
 }
 
 const FormWidget = (props: Props) => {
-  const { caster, spell, render, handleConfirm, handleCancel } = props;
+  const { caster, spell, render, styles, handleConfirm, handleCancel } = props;
+
+  const casterName = Object.values(caster ? caster : {})[0];
 
   const [record, setRecord] = useState<{ [key: string]: any } | {}>();
 
@@ -24,7 +27,7 @@ const FormWidget = (props: Props) => {
   };
 
   return (
-    <StyledFormWidget component="form">
+    <StyledFormWidget component="form" customStyles={styles}>
       <Box
         sx={{
           height: "10%",
@@ -34,15 +37,19 @@ const FormWidget = (props: Props) => {
           padding: "10px",
         }}
       >
-        {/* <Typography variant="h6">
-          {`${spell === "Add" ? "Add New" : "Edit"} ${
-            Object.values(caster ? caster : {})[0].paramType
-              ? "Evaluation"
-              : "Modifier"
-          }`}
-        </Typography> */}
+        <Typography variant="h6">
+          {`${spell === "Add" ? "Add New Template To" : "Edit Template From"} ${
+            casterName[0].toUpperCase() + casterName.slice(1).toLowerCase()
+          } Category`}
+        </Typography>
       </Box>
-      <Box sx={{ height: "80%", background: "gray" }}>
+      <Box
+        sx={{
+          padding: "10px",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         {render(caster, record, changeRecord)}
       </Box>
 

@@ -6,7 +6,7 @@ interface Props {
   open: boolean;
   caster: {} | undefined;
   record: { [key: string]: any } | undefined;
-  changeRecord: (arg0: { [key: string]: any }) => void;
+  onChange: (arg0: { [key: string]: any }) => void;
 }
 
 const Form = (props: Props) => {
